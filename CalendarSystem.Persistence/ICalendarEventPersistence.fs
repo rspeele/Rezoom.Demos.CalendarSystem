@@ -8,7 +8,7 @@ open CalendarSystem.Common
 type ICalendarEventPersistence =
     /// Store a calendar event.
     abstract member CreateCalendarEvent
-        : createdBy : CurrentUserId
+        : createdBy : Session Id
         * client : Client Id
         * consultant : User Id
         * name : string
@@ -27,7 +27,7 @@ type ICalendarEventPersistence =
     /// Note that it is not possible to change the client it's associated with.
     /// For that, you should probably just delete the event and make a new one.
     abstract member CreateCalendarEventVersion
-        : createdBy : CurrentUserId
+        : createdBy : Session Id
         * calendarEvent : CalendarEvent Id
         * consultant : User Id
         * name : string
@@ -36,7 +36,7 @@ type ICalendarEventPersistence =
 
     /// Mark a calendar event as deleted.
     abstract member DeleteCalendarEvent
-        : deletedBy : CurrentUserId
+        : deletedBy : Session Id
         * calendarEvent : CalendarEvent Id
         -> unit Plan
 

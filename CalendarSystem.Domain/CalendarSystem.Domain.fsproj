@@ -51,9 +51,9 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <None Include="README.md" />
-    <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="SessionService.fs" />
     <Content Include="packages.config" />
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="AuthenticationService.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

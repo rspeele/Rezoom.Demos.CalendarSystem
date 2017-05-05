@@ -51,10 +51,10 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <None Include="README.md" />
+    <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="ISessionPersistence.fs" />
     <Compile Include="ICalendarEventPersistence.fs" />
-    <Content Include="packages.config" />
     <Compile Include="IUserPersistence.fs" />
   </ItemGroup>
   <ItemGroup>

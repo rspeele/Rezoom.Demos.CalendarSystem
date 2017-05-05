@@ -35,16 +35,16 @@ type User =
         Updated : Occurence
     }
 
-/// Helps us upgrade the password hash format later, since we'll know which passwords
-/// are stored in which format.
-type UserPasswordHashVersion =
-    | PBKDF2With5000Rounds
-
 type UserPasswordHash =
-    {   Version : UserPasswordHashVersion
-        Hash : byte array
-        Salt : byte array
-    }
+    | BCryptDotNet of string
+    member this.Verify(password : string) =
+        match this with
+        | BCryptDotNet hash ->
+            BCrypt.Net.BCrypt.Verify(password, hash)
+    static member Generate(password : string) =
+        let salt = BCrypt.Net.BCrypt.GenerateSalt()
+        let hashed = BCrypt.Net.BCrypt.HashPassword(password, salt)
+        BCryptDotNet hashed
 
 type Session =
     {   Id : Session Id
@@ -53,5 +53,3 @@ type Session =
         Created : DateTimeOffset
         ValidTo : DateTimeOffset
     }
-
-type CurrentUserId = internal CurrentUserId of User Id

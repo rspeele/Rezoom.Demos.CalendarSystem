@@ -14,4 +14,4 @@ type ISessionPersistence =
 
     /// Get a session record that is still valid by its token.
     /// Useful when implementing domain logic to check session validity/associated user.
-    abstract member GetValidSessionByToken : token : SessionToken -> Session option Plan
+    abstract member GetValidSessionByToken : token : SessionToken -> (Session * User) option Plan

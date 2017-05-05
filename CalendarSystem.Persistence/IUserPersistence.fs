@@ -7,7 +7,7 @@ open CalendarSystem.Common
 type IUserPersistence =
     /// Store a user.
     abstract member CreateUser
-        : createdBy : CurrentUserId
+        : createdBy : Session Id
         * email : EmailAddress
         * name : string
         * hash : UserPasswordHash
@@ -16,7 +16,7 @@ type IUserPersistence =
 
     /// Update a user's regular metadata in the database. Sets the Updated occurence.
     abstract member Update
-        : updatedBy : CurrentUserId
+        : updatedBy : Session Id
         * updateUser : User Id
         * email : EmailAddress
         * name : string
