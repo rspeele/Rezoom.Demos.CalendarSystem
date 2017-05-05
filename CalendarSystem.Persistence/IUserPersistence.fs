@@ -30,6 +30,9 @@ type IUserPersistence =
         * hash : UserPasswordHash
         -> unit Plan
 
+    /// Find a user by their ID.
+    abstract member GetUserById : id : User Id -> User Plan
+
     /// Attempt to find a user by their email address. If no such user exists, return None.
     /// You get the password hash as well since a major reason to use this method is to implement login
     /// functionality.

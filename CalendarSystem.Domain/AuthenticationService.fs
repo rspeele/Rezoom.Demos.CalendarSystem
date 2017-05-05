@@ -1,7 +1,6 @@
 ﻿namespace CalendarSystem.Domain
 open System
 open System.Security
-open System.Security.Cryptography
 open Rezoom
 open CalendarSystem.Common
 open CalendarSystem.Persistence.Membership

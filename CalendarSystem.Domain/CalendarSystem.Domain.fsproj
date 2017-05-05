@@ -54,6 +54,7 @@
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="AuthenticationService.fs" />
+    <Compile Include="CalendarEventService.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

@@ -55,6 +55,7 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Id.fs" />
     <Compile Include="SessionToken.fs" />
+    <Compile Include="Validation.fs" />
     <Compile Include="Exceptions.fs" />
     <Compile Include="Measures.fs" />
     <Compile Include="EmailAddress.fs" />
