@@ -9,11 +9,13 @@ type private Reset() =
 
 type private RequireResetAtExecutionStartErrand() =
     inherit SynchronousErrand<unit>()
+    let identity = box typeof<RequireResetAtExecutionStartErrand>
+    let category = box typeof<RequireResetAtExecutionStartErrand>
     let cacheInfo =
         { new CacheInfo() with
             override __.Cacheable = false
-            override __.Category = box typeof<RequireResetAtExecutionStartErrand>
-            override __.Identity = box typeof<RequireResetAtExecutionStartErrand>
+            override __.Category = category
+            override __.Identity = identity
         }
     override __.CacheInfo = cacheInfo
     override __.Prepare(serviceContext) =

@@ -5,6 +5,7 @@ open FsUnit
 open CalendarSystem.Model.Membership
 open CalendarSystem.Domain.Test
 open CalendarSystem.Domain.Membership
+open System.Security
 
 [<Test>]
 let ``Can log in as the initial root user`` () =
@@ -35,6 +36,18 @@ let ``Result of log in as root is a valid claim`` () =
         let! claim = loginAsRoot
         let! _, user = Membership.Authentication.Authenticate(claim)
         match user.Role with
-        | SuperUser -> ()
+        | SuperUser ->
+            if user.Email <> Testing.rootEmail then
+                bug "Different email address"
         | _ -> bug "Root should be a super user"
+    } |> Testing.runPlan
+[<Test>]
+let ``Bogus session token is not a valid claim`` () =
+    plan {
+        let claim = ClaimingSuperUser (SuperUserClaim (SessionToken.Generate()))
+        try
+            let! _ = Membership.Authentication.Authenticate(claim)
+            bug "Should not have authenticated"
+        with
+        | :? SecurityException as s -> return ()
     } |> Testing.runPlan
