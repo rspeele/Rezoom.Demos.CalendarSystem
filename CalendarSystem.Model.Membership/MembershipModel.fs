@@ -35,6 +35,17 @@ type User =
         Updated : Occurence
     }
 
+/// Represents the randomly generated setup token for a new user.
+/// When a user is first created, they don't have a password to log in yet, but we send them this token.
+/// Using it, they can set up their password.
+type UserSetupToken =
+    | UserSetupToken of string
+    static member Generate() =
+        /// Almost 3 trillion possibilities -- nobody should be able to guess one during the time it's valid
+        UserSetupToken (SecureRandomString.ofLength 8 "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" )
+
+/// Represents the stored form of a password, which should be impossible to reverse to a plain-text password
+/// without brute forcing it, and slow to brute force.
 type UserPasswordHash =
     | BCryptDotNet of string
     member this.Verify(password : string) =

@@ -54,10 +54,10 @@
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="BugException.fs" />
-    <Compile Include="NonNull.fs" />
     <Compile Include="InclusiveRange.fs" />
     <Compile Include="Measures.fs" />
     <Compile Include="LazyDependencyInjection.fs" />
+    <Compile Include="SecureRandomString.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

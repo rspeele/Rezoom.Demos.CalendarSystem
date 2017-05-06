@@ -10,8 +10,8 @@ type IUserPersistence =
     abstract member CreateUser
         : createdBy : Session Id
         * email : EmailAddress
+        * setupToken : UserSetupToken
         * name : string
-        * hash : UserPasswordHash
         * role : Role
         -> User Id Plan
 

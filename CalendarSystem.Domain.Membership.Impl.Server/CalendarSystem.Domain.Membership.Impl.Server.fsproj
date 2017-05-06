@@ -50,9 +50,11 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="AuthenticationService.fs" />
-    <Content Include="packages.config" />
+    <Compile Include="UserService.fs" />
+    <Compile Include="Install.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

@@ -1,4 +1,4 @@
-﻿module private CalendarSystem.Domain.Membership.Impl.Server.CalendarEventService
+﻿module private CalendarSystem.Domain.Membership.Impl.Server.AuthenticationService
 open System
 open System.Security
 open Utilities
