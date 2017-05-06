@@ -43,7 +43,8 @@ let service =
                 let! user = MembershipPersistence.Users.GetUserByEmail(email)
                 match user with
                 | None -> return None
-                | Some (user, hash) ->
+                | Some (_, None) -> return None // they haven't set up their password yet
+                | Some (user, Some hash) ->
                     if hash.Verify(password.Text) then
                         let token = SessionToken.Generate()
                         let expiration = DateTimeOffset.UtcNow + TimeSpan.OfDays(normalSessionLength)

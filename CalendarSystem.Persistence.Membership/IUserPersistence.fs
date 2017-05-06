@@ -21,12 +21,11 @@ type IUserPersistence =
         * updateUser : User Id
         * email : EmailAddress
         * name : string
-        * role : Role
         -> unit Plan
 
     /// Update a user's password hash in the database. Sets the Updated occurence.
     abstract member UpdatePasswordHash
-        : updatedBy : User Id
+        : updatedBy : Session Id
         * updateUser : User Id
         * hash : UserPasswordHash
         -> unit Plan
@@ -37,4 +36,4 @@ type IUserPersistence =
     /// Attempt to find a user by their email address. If no such user exists, return None.
     /// You get the password hash as well since a major reason to use this method is to implement login
     /// functionality.
-    abstract member GetUserByEmail : email : EmailAddress -> (User * UserPasswordHash) option Plan
+    abstract member GetUserByEmail : email : EmailAddress -> (User * UserPasswordHash option) option Plan

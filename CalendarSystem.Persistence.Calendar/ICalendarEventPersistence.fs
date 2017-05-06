@@ -34,7 +34,7 @@ type ICalendarEventPersistence =
         * consultant : User Id
         * name : string
         * duration : DateTimeOffset InclusiveRange
-        -> CalendarEventVersion Id
+        -> CalendarEventVersion Id Plan
 
     /// Mark a calendar event as deleted.
     abstract member DeleteCalendarEvent

@@ -37,8 +37,5 @@ open System.Runtime.InteropServices
 [<assembly: AssemblyVersion("1.0.0.0")>]
 [<assembly: AssemblyFileVersion("1.0.0.0")>]
 
-// Let the server-side domain implementation construct our internal types like sessions.
-[<assembly: InternalsVisibleTo("CalendarSystem.Domain.Membership.Impl.Server")>]
-
 do
     ()

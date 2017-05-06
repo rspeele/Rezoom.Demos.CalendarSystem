@@ -28,6 +28,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Calen
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Membership.Impl.Server", "CalendarSystem.Domain.Membership.Impl.Server\CalendarSystem.Domain.Membership.Impl.Server.fsproj", "{9F8CD9BD-9F12-409B-B140-2D5CFCD02694}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.Impl.Memory", "CalendarSystem.Persistence.Impl.Memory\CalendarSystem.Persistence.Impl.Memory.fsproj", "{B5B87DB7-759A-4FBE-B4CD-4BEDB27F75EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{9F8CD9BD-9F12-409B-B140-2D5CFCD02694}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F8CD9BD-9F12-409B-B140-2D5CFCD02694}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F8CD9BD-9F12-409B-B140-2D5CFCD02694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5B87DB7-759A-4FBE-B4CD-4BEDB27F75EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5B87DB7-759A-4FBE-B4CD-4BEDB27F75EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5B87DB7-759A-4FBE-B4CD-4BEDB27F75EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5B87DB7-759A-4FBE-B4CD-4BEDB27F75EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

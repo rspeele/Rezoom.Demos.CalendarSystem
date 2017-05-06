@@ -1,4 +1,4 @@
-﻿namespace CalendarSystem.Model.AssemblyInfo
+﻿namespace CalendarSystem.Persistence.Impl.Memory.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[<assembly: AssemblyTitle("CalendarSystem.Model")>]
+[<assembly: AssemblyTitle("CalendarSystem.Persistence.Impl.Memory")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
-[<assembly: AssemblyProduct("CalendarSystem.Model")>]
+[<assembly: AssemblyProduct("CalendarSystem.Persistence.Impl.Memory")>]
 [<assembly: AssemblyCopyright("Copyright ©  2017")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
@@ -22,7 +22,7 @@ open System.Runtime.InteropServices
 [<assembly: ComVisible(false)>]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[<assembly: Guid("005f4ffc-fb1f-4049-8ac1-6cf18bd3c4f1")>]
+[<assembly: Guid("b5b87db7-759a-4fbe-b4cd-4bedb27f75ea")>]
 
 // Version information for an assembly consists of the following four values:
 // 
@@ -36,10 +36,6 @@ open System.Runtime.InteropServices
 // [<assembly: AssemblyVersion("1.0.*")>]
 [<assembly: AssemblyVersion("1.0.0.0")>]
 [<assembly: AssemblyFileVersion("1.0.0.0")>]
-
-// Let these assemblies work with the underlying represention of Ids.
-
-[<assembly: InternalsVisibleTo("CalendarSystem.Persistence.Impl.Memory")>]
 
 do
     ()

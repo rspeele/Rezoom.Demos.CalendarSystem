@@ -23,5 +23,5 @@ type CalendarEventVersion =
         CalendarEventId : CalendarEvent Id
         Name : string
         Duration : DateTimeOffset InclusiveRange
-        Consultant : User Id
+        ConsultantId : User Id
     }

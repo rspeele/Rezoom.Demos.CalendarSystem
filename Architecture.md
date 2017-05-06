@@ -64,7 +64,11 @@ and you're repeating yourself composing domain layer operations in both apps, (f
 load its data and the data of the associated client), then maybe you should move those helpers into this intermediate
 layer so you can have both products reference it.
 
-Obviously, a lot of solutions don't really need this layer at all, because they have only one product.
+Another reason to have this layer is if the product layer is written in C# instead of F# so it can't work with
+Rezoom "plans" as cleanly as you can from F# (due to the lack of computation expression builders).
+
+Some solutions don't need this layer at all, because they have only one product and it can compose the things it needs
+directly from the domain layer.
 
 ## Concerns
 
