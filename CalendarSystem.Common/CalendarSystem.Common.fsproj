@@ -57,7 +57,6 @@
     <Compile Include="SessionToken.fs" />
     <Compile Include="Validation.fs" />
     <Compile Include="Exceptions.fs" />
-    <Compile Include="Measures.fs" />
     <Compile Include="EmailAddress.fs" />
     <Compile Include="MembershipModel.fs" />
     <Compile Include="CalendarModel.fs" />
