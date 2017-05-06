@@ -8,8 +8,8 @@ type IAuthenticationService =
     abstract member Login
         : email : EmailAddress
         * password : InputPassword
-        -> (SessionToken * DateTimeOffset) option Plan
+        -> (Claim * DateTimeOffset) option Plan
 
     abstract member Authenticate
-        : token : SessionToken
-        -> AuthSession Plan
+        : claim : Claim
+        -> (Session Id * User) Plan

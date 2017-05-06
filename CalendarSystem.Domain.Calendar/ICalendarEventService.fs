@@ -8,7 +8,7 @@ open CalendarSystem.Model.Calendar
 
 type ICalendarEventService =
     abstract member CreateEvent
-        : session : AdminAuthSession
+        : claim : AdminClaim
         * clientId : Client Id
         * consultantId : User Id
         * name : string
@@ -16,6 +16,6 @@ type ICalendarEventService =
         -> CalendarEvent Id Plan ValidationResult Plan
 
     abstract member GetEvents
-        : session : AuthSession
+        : claim : Claim
         * duration : DateTimeOffset InclusiveRange
         -> CalendarEvent IReadOnlyList Plan

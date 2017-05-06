@@ -55,3 +55,21 @@ type SessionToken =
     static member Generate() =
         SessionToken (SessionTokenGeneration.generateTokenOfLength 12)
 
+type AdminClaim = AdminClaim of SessionToken
+type ConsultantClaim = ConsultantClaim of SessionToken
+type ClientClaim = ClientClaim of SessionToken
+
+/// A claim. This is what we get back from authenticating.
+/// All claims are still checked by the domain layer code (which is why we let anybody construct them)
+/// but they provide a layer of type safety as well, not for security but for self-documenting code,
+/// that you can't try to call AdminService.DeleteEverything without passing it a ClaimAdmin.
+type Claim =
+    | ClaimingAdmin of AdminClaim
+    | ClaimingConsultant of ConsultantClaim
+    | ClaimingClient of ClientClaim
+    member this.SessionToken =
+        match this with
+        | ClaimingAdmin (AdminClaim t)
+        | ClaimingConsultant (ConsultantClaim t)
+        | ClaimingClient (ClientClaim t) -> t
+

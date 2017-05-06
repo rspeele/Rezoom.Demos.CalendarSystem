@@ -54,7 +54,6 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="SessionToken.fs" />
     <Compile Include="MembershipModel.fs" />
-    <Compile Include="AuthSessions.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net">

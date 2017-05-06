@@ -9,9 +9,11 @@ open CalendarSystem.Domain.Calendar
 
 let service =
     { new ICalendarEventService with
-        member __.CreateEvent(NonNull session, clientId, consultantId, name, duration) =
+        member __.CreateEvent(adminClaim, clientId, consultantId, name, duration) =
             plan {
-                let! consultant = Membership.Users.GetUserById(AuthAdmin session, consultantId)
+                let claim = ClaimingAdmin adminClaim
+                let! sessionId, _ = Membership.Authentication.Authenticate(claim)
+                let! consultant = Membership.Users.GetUserById(claim, consultantId)
                 match consultant.Role with
                 | ConsultantUser ->
                     let! existing =
@@ -22,7 +24,7 @@ let service =
                     else
                         let doIt =
                             CalendarPersistence.CalendarEvents.CreateCalendarEvent
-                                (session.CommonSession.SessionId, clientId, consultantId, name, duration)
+                                (sessionId, clientId, consultantId, name, duration)
                         return Ok doIt
                 | _ ->
                     return Error [InvalidArgument("consultantId", "Only a consultant can have calendar events.")]

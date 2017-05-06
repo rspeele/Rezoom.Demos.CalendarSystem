@@ -5,12 +5,12 @@ open CalendarSystem.Model.Membership
 
 type IUserService =
     abstract member GetUserById
-        : session : AuthSession
+        : claim : Claim
         * user : User Id
         -> User Plan
     
     abstract member CreateUser
-        : session : AdminAuthSession
+        : claim : AdminClaim
         * email : EmailAddress
         * name : string
         * role : Role

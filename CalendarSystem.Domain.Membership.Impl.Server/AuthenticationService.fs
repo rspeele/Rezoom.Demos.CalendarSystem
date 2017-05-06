@@ -22,21 +22,28 @@ let service =
                         let token = SessionToken.Generate()
                         let expiration = DateTimeOffset.UtcNow + TimeSpan.OfDays(sessionLength)
                         let! _ = MembershipPersistence.Sessions.CreateSession(token, user.Id, expiration)
-                        return Some (token, expiration)
+                        let claim =
+                            match user.Role with
+                            | AdminUser -> ClaimingAdmin (AdminClaim token)
+                            | ConsultantUser -> ClaimingConsultant (ConsultantClaim token)
+                            | ClientUser _ -> ClaimingClient (ClientClaim token)
+                        return Some (claim, expiration)
                     else
                         return None
             }
-        member __.Authenticate(token) =
+        member __.Authenticate(claim) =
             plan {
+                let token = claim.SessionToken
                 let! session = MembershipPersistence.Sessions.GetValidSessionByToken(token)
                 match session with
                 | Some (session, user) when session.ValidTo > DateTimeOffset.UtcNow ->
-                    let common = { sessionId = session.Id; userId = user.Id }
                     return
-                        match user.Role with
-                        | AdminUser -> AuthAdmin (AdminAuthSession common)
-                        | ConsultantUser -> AuthConsultant (ConsultantAuthSession common)
-                        | ClientUser clientId -> AuthClient (ClientAuthSession (common, clientId))
+                        match user.Role, claim with
+                        | AdminUser, ClaimingAdmin _
+                        | ConsultantUser, ClaimingConsultant _
+                        | ClientUser _, ClaimingClient _ -> session.Id, user
+                        | _ ->
+                            raise <| SecurityException("Invalid claim")
                 | _ ->
                     return raise <| SecurityException("Invalid or expired session token")
             }
