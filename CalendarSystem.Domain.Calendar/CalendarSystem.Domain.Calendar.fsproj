@@ -52,7 +52,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="ICalendarEventService.fs" />
     <Compile Include="ICalendarDomain.fs" />
     <Compile Include="CalendarDomain.fs" />
   </ItemGroup>

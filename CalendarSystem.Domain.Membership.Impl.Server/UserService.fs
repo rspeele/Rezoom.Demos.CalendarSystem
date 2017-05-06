@@ -1,9 +1,5 @@
 ﻿module private CalendarSystem.Domain.Membership.Impl.Server.UserService
-open System
-open System.Security
-open Utilities
 open Rezoom
-open CalendarSystem.Model
 open CalendarSystem.Model.Membership
 open CalendarSystem.Persistence.Membership
 open CalendarSystem.Domain.Membership

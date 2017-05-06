@@ -53,8 +53,6 @@
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="InputPassword.fs" />
-    <Compile Include="IUserService.fs" />
-    <Compile Include="IAuthenticationService.fs" />
     <Compile Include="IMembershipDomain.fs" />
     <Compile Include="MembershipDomain.fs" />
   </ItemGroup>
