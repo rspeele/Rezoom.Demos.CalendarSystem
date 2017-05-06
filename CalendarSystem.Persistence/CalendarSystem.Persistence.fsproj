@@ -76,11 +76,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CalendarSystem.Common\CalendarSystem.Common.fsproj">
-      <Name>CalendarSystem.Common</Name>
-      <Project>{c33a3726-5be6-4e2f-93e1-6929ac00731e}</Project>
-      <Private>True</Private>
-    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.fsproj">
       <Name>Utilities</Name>
       <Project>{ab97a558-3288-453e-a672-e67c0b46437a}</Project>

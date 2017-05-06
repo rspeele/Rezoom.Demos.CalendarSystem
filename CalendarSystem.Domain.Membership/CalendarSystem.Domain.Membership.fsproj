@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>9d6c8cc5-c64f-48f6-9d88-797ef1939f58</ProjectGuid>
+    <ProjectGuid>77fb243f-6326-4529-a653-a970efb4380b</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CalendarSystem.Persistence.Membership</RootNamespace>
-    <AssemblyName>CalendarSystem.Persistence.Membership</AssemblyName>
+    <RootNamespace>CalendarSystem.Domain.Membership</RootNamespace>
+    <AssemblyName>CalendarSystem.Domain.Membership</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>CalendarSystem.Persistence.Membership</Name>
+    <Name>CalendarSystem.Domain.Membership</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,13 +50,13 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="README.md" />
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="ISessionPersistence.fs" />
-    <Compile Include="IUserPersistence.fs" />
-    <Compile Include="IMembershipPersistence.fs" />
-    <Compile Include="MembershipPersistence.fs" />
+    <Compile Include="InputPassword.fs" />
+    <Compile Include="IUserService.fs" />
+    <Compile Include="IAuthenticationService.fs" />
+    <Compile Include="IMembershipDomain.fs" />
+    <Compile Include="MembershipDomain.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

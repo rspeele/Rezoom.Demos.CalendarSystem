@@ -1,4 +1,4 @@
-﻿namespace CalendarSystem.Domain.AssemblyInfo
+﻿namespace CalendarSystem.Persistence.Calendar.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[<assembly: AssemblyTitle("CalendarSystem.Domain")>]
+[<assembly: AssemblyTitle("CalendarSystem.Persistence.Calendar")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
-[<assembly: AssemblyProduct("CalendarSystem.Domain")>]
+[<assembly: AssemblyProduct("CalendarSystem.Persistence.Calendar")>]
 [<assembly: AssemblyCopyright("Copyright ©  2017")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
@@ -22,7 +22,7 @@ open System.Runtime.InteropServices
 [<assembly: ComVisible(false)>]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[<assembly: Guid("990f5262-88e3-4fbf-9bcd-701fe819c0e4")>]
+[<assembly: Guid("ec4d694b-74e4-45a3-a05d-7c8e66578e1b")>]
 
 // Version information for an assembly consists of the following four values:
 // 

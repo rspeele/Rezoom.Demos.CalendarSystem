@@ -1,8 +1,6 @@
-﻿// Here's where we define the representation of entities in the system
-// related to membership (being a user, being associated with a client, that sort of thing).
-
-namespace rec CalendarSystem.Common
+﻿namespace rec CalendarSystem.Model.Membership
 open System
+open CalendarSystem.Model
 
 type Occurence = // e.g. at owl creek bridge
     {   Who : Session Id

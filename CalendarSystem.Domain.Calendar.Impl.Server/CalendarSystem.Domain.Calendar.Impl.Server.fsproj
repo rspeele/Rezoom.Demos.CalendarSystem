@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>9d6c8cc5-c64f-48f6-9d88-797ef1939f58</ProjectGuid>
+    <ProjectGuid>8973e971-8801-4bda-af4c-69e5ddb1b42f</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CalendarSystem.Persistence.Membership</RootNamespace>
-    <AssemblyName>CalendarSystem.Persistence.Membership</AssemblyName>
+    <RootNamespace>CalendarSystem.Domain.Calendar.Impl.Server</RootNamespace>
+    <AssemblyName>CalendarSystem.Domain.Calendar.Impl.Server</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>CalendarSystem.Persistence.Membership</Name>
+    <Name>CalendarSystem.Domain.Calendar.Impl.Server</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,13 +50,10 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="README.md" />
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="ISessionPersistence.fs" />
-    <Compile Include="IUserPersistence.fs" />
-    <Compile Include="IMembershipPersistence.fs" />
-    <Compile Include="MembershipPersistence.fs" />
+    <Compile Include="CalendarEventService.fs" />
+    <Compile Include="Install.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -76,6 +73,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CalendarSystem.Domain.Calendar\CalendarSystem.Domain.Calendar.fsproj">
+      <Name>CalendarSystem.Domain.Calendar</Name>
+      <Project>{373270f7-272b-49b6-af16-1fd9dcb291ce}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Domain.Membership\CalendarSystem.Domain.Membership.fsproj">
+      <Name>CalendarSystem.Domain.Membership</Name>
+      <Project>{77fb243f-6326-4529-a653-a970efb4380b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Model.Calendar\CalendarSystem.Model.Calendar.fsproj">
+      <Name>CalendarSystem.Model.Calendar</Name>
+      <Project>{b112dca0-d124-481d-a7f3-8a79640b6317}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\CalendarSystem.Model.Membership\CalendarSystem.Model.Membership.fsproj">
       <Name>CalendarSystem.Model.Membership</Name>
       <Project>{50d1f452-bae6-4c64-8580-7135cef8bced}</Project>
@@ -84,6 +96,11 @@
     <ProjectReference Include="..\CalendarSystem.Model\CalendarSystem.Model.fsproj">
       <Name>CalendarSystem.Model</Name>
       <Project>{005f4ffc-fb1f-4049-8ac1-6cf18bd3c4f1}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Persistence.Calendar\CalendarSystem.Persistence.Calendar.fsproj">
+      <Name>CalendarSystem.Persistence.Calendar</Name>
+      <Project>{ec4d694b-74e4-45a3-a05d-7c8e66578e1b}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.fsproj">

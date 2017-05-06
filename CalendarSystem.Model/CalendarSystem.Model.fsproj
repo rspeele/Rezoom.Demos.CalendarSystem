@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>990f5262-88e3-4fbf-9bcd-701fe819c0e4</ProjectGuid>
+    <ProjectGuid>005f4ffc-fb1f-4049-8ac1-6cf18bd3c4f1</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CalendarSystem.Domain</RootNamespace>
-    <AssemblyName>CalendarSystem.Domain</AssemblyName>
+    <RootNamespace>CalendarSystem.Model</RootNamespace>
+    <AssemblyName>CalendarSystem.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>CalendarSystem.Domain</Name>
+    <Name>CalendarSystem.Model</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,11 +50,12 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="README.md" />
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="AuthenticationService.fs" />
-    <Compile Include="CalendarEventService.fs" />
+    <Compile Include="Id.fs" />
+    <Compile Include="Validation.fs" />
+    <Compile Include="Exceptions.fs" />
+    <Compile Include="EmailAddress.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -63,32 +64,12 @@
       <AssemblyName>FSharp.Core.dll</AssemblyName>
       <HintPath>$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\FSharp\.NETFramework\v4.0\$(TargetFSharpCoreVersion)\FSharp.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Rezoom">
-      <HintPath>..\packages\Rezoom.0.3.0\lib\net45\Rezoom.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.ValueTuple">
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CalendarSystem.Common\CalendarSystem.Common.fsproj">
-      <Name>CalendarSystem.Common</Name>
-      <Project>{c33a3726-5be6-4e2f-93e1-6929ac00731e}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\CalendarSystem.Persistence\CalendarSystem.Persistence.fsproj">
-      <Name>CalendarSystem.Persistence</Name>
-      <Project>{342b92bf-bfb0-4ab3-91d9-380c9f0d2884}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Utilities\Utilities.fsproj">
-      <Name>Utilities</Name>
-      <Project>{ab97a558-3288-453e-a672-e67c0b46437a}</Project>
-      <Private>True</Private>
-    </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

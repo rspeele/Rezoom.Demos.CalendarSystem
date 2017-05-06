@@ -58,14 +58,9 @@
     <Compile Include="Validation.fs" />
     <Compile Include="Exceptions.fs" />
     <Compile Include="EmailAddress.fs" />
-    <Compile Include="MembershipModel.fs" />
     <Compile Include="CalendarModel.fs" />
-    <Compile Include="AccountingModel.fs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BCrypt.Net">
-      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core">
       <Name>FSharp.Core</Name>

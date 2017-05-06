@@ -37,10 +37,20 @@ type seconds =
 type milliseconds =
     static member OfTimeSpan(ts : TimeSpan) =
         ts.TotalMilliseconds * 1.0<milliseconds>
-    static member ToTimeSpan(ms : float<milliseconds>) =
-        TimeSpan.FromMilliseconds(float ms)
 
 let hoursPerDay = 24.0<hours> / 1.0<days>
 let minutesPerHour = 60.0<minutes> / 1.0<hours>
 let secondsPerMinute = 60.0<seconds> / 1.0<minutes>
 let millisPerSecond = 1000.0<milliseconds> / 1.0<seconds>
+
+type TimeSpan with
+    static member OfDays(f : float<days>) =
+        TimeSpan.FromDays(float f)
+    static member OfHours(f : float<hours>) =
+        TimeSpan.FromHours(float f)
+    static member OfMinutes(f : float<minutes>) =
+        TimeSpan.FromMinutes(float f)
+    static member OfSeconds(f : float<seconds>) =
+        TimeSpan.FromSeconds(float f)
+    static member OfMilliseconds(f : float<milliseconds>) =
+        TimeSpan.FromMilliseconds(float f)

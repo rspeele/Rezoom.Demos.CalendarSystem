@@ -3,15 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Common", "CalendarSystem.Common\CalendarSystem.Common.fsproj", "{C33A3726-5BE6-4E2F-93E1-6929AC00731E}"
-EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence", "CalendarSystem.Persistence\CalendarSystem.Persistence.fsproj", "{342B92BF-BFB0-4AB3-91D9-380C9F0D2884}"
-EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Utilities", "Utilities\Utilities.fsproj", "{AB97A558-3288-453E-A672-E67C0B46437A}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain", "CalendarSystem.Domain\CalendarSystem.Domain.fsproj", "{990F5262-88E3-4FBF-9BCD-701FE819C0E4}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.Membership", "CalendarSystem.Persistence.Membership\CalendarSystem.Persistence.Membership.fsproj", "{9D6C8CC5-C64F-48F6-9D88-797EF1939F58}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Server", "CalendarSystem.Domain.Server\CalendarSystem.Domain.Server.fsproj", "{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D480C286-293C-4BBB-8873-5A4A5E18A498}"
+	ProjectSection(SolutionItems) = preProject
+		Architecture.md = Architecture.md
+	EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Model.Membership", "CalendarSystem.Model.Membership\CalendarSystem.Model.Membership.fsproj", "{50D1F452-BAE6-4C64-8580-7135CEF8BCED}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Model", "CalendarSystem.Model\CalendarSystem.Model.fsproj", "{005F4FFC-FB1F-4049-8AC1-6CF18BD3C4F1}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Model.Calendar", "CalendarSystem.Model.Calendar\CalendarSystem.Model.Calendar.fsproj", "{B112DCA0-D124-481D-A7F3-8A79640B6317}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.Calendar", "CalendarSystem.Persistence.Calendar\CalendarSystem.Persistence.Calendar.fsproj", "{EC4D694B-74E4-45A3-A05D-7C8E66578E1B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Membership", "CalendarSystem.Domain.Membership\CalendarSystem.Domain.Membership.fsproj", "{77FB243F-6326-4529-A653-A970EFB4380B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Calendar", "CalendarSystem.Domain.Calendar\CalendarSystem.Domain.Calendar.fsproj", "{373270F7-272B-49B6-AF16-1FD9DCB291CE}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Calendar.Impl.Server", "CalendarSystem.Domain.Calendar.Impl.Server\CalendarSystem.Domain.Calendar.Impl.Server.fsproj", "{8973E971-8801-4BDA-AF4C-69E5DDB1B42F}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Membership.Impl.Server", "CalendarSystem.Domain.Membership.Impl.Server\CalendarSystem.Domain.Membership.Impl.Server.fsproj", "{9F8CD9BD-9F12-409B-B140-2D5CFCD02694}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,26 +34,46 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C33A3726-5BE6-4E2F-93E1-6929AC00731E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C33A3726-5BE6-4E2F-93E1-6929AC00731E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C33A3726-5BE6-4E2F-93E1-6929AC00731E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C33A3726-5BE6-4E2F-93E1-6929AC00731E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{342B92BF-BFB0-4AB3-91D9-380C9F0D2884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{342B92BF-BFB0-4AB3-91D9-380C9F0D2884}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{342B92BF-BFB0-4AB3-91D9-380C9F0D2884}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{342B92BF-BFB0-4AB3-91D9-380C9F0D2884}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB97A558-3288-453E-A672-E67C0B46437A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB97A558-3288-453E-A672-E67C0B46437A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB97A558-3288-453E-A672-E67C0B46437A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB97A558-3288-453E-A672-E67C0B46437A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{990F5262-88E3-4FBF-9BCD-701FE819C0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{990F5262-88E3-4FBF-9BCD-701FE819C0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{990F5262-88E3-4FBF-9BCD-701FE819C0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{990F5262-88E3-4FBF-9BCD-701FE819C0E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D6C8CC5-C64F-48F6-9D88-797EF1939F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D6C8CC5-C64F-48F6-9D88-797EF1939F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D6C8CC5-C64F-48F6-9D88-797EF1939F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D6C8CC5-C64F-48F6-9D88-797EF1939F58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D1F452-BAE6-4C64-8580-7135CEF8BCED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D1F452-BAE6-4C64-8580-7135CEF8BCED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D1F452-BAE6-4C64-8580-7135CEF8BCED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D1F452-BAE6-4C64-8580-7135CEF8BCED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{005F4FFC-FB1F-4049-8AC1-6CF18BD3C4F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{005F4FFC-FB1F-4049-8AC1-6CF18BD3C4F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{005F4FFC-FB1F-4049-8AC1-6CF18BD3C4F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{005F4FFC-FB1F-4049-8AC1-6CF18BD3C4F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B112DCA0-D124-481D-A7F3-8A79640B6317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B112DCA0-D124-481D-A7F3-8A79640B6317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B112DCA0-D124-481D-A7F3-8A79640B6317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B112DCA0-D124-481D-A7F3-8A79640B6317}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4D694B-74E4-45A3-A05D-7C8E66578E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4D694B-74E4-45A3-A05D-7C8E66578E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4D694B-74E4-45A3-A05D-7C8E66578E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4D694B-74E4-45A3-A05D-7C8E66578E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77FB243F-6326-4529-A653-A970EFB4380B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77FB243F-6326-4529-A653-A970EFB4380B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77FB243F-6326-4529-A653-A970EFB4380B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77FB243F-6326-4529-A653-A970EFB4380B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{373270F7-272B-49B6-AF16-1FD9DCB291CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{373270F7-272B-49B6-AF16-1FD9DCB291CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{373270F7-272B-49B6-AF16-1FD9DCB291CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{373270F7-272B-49B6-AF16-1FD9DCB291CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8973E971-8801-4BDA-AF4C-69E5DDB1B42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8973E971-8801-4BDA-AF4C-69E5DDB1B42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8973E971-8801-4BDA-AF4C-69E5DDB1B42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8973E971-8801-4BDA-AF4C-69E5DDB1B42F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F8CD9BD-9F12-409B-B140-2D5CFCD02694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8CD9BD-9F12-409B-B140-2D5CFCD02694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F8CD9BD-9F12-409B-B140-2D5CFCD02694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F8CD9BD-9F12-409B-B140-2D5CFCD02694}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

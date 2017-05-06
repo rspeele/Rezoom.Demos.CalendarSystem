@@ -1,7 +1,8 @@
 ﻿namespace CalendarSystem.Persistence.Membership
 open System
 open Rezoom
-open CalendarSystem.Common
+open CalendarSystem.Model
+open CalendarSystem.Model.Membership
 
 /// Defines the API for persisting users.
 type IUserPersistence =
