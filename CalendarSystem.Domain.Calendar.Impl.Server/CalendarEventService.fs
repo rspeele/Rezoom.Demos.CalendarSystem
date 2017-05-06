@@ -2,7 +2,6 @@
 open Rezoom
 open CalendarSystem.Model
 open CalendarSystem.Model.Membership
-open CalendarSystem.Model.Calendar
 open CalendarSystem.Persistence.Calendar
 open CalendarSystem.Domain.Membership
 open CalendarSystem.Domain.Calendar
@@ -31,6 +30,8 @@ let service =
             }
         member __.GetEvents(session, duration) =
             plan {
-                return failwith ""
+                let! _, me = Membership.Authentication.Authenticate(session)
+                let clientFilter = me.Role.MemberOfClient
+                return! CalendarPersistence.CalendarEvents.GetCalendarEvents(clientFilter, None, duration)
             }
     }

@@ -25,6 +25,12 @@ type Role =
     | ConsultantUser
     /// Client -- logs on to view calendar events related to their own company.
     | ClientUser of Client Id
+    member this.MemberOfClient =
+        match this with
+        | SuperUser
+        | AdminUser
+        | ConsultantUser -> None
+        | ClientUser clientId -> Some clientId
 
 type User =
     {   Id : User Id
