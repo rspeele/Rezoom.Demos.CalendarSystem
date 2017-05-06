@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>342b92bf-bfb0-4ab3-91d9-380c9f0d2884</ProjectGuid>
+    <ProjectGuid>3dcc0aeb-f70c-4b6c-94cf-ff6c9d1ac973</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CalendarSystem.Persistence</RootNamespace>
-    <AssemblyName>CalendarSystem.Persistence</AssemblyName>
+    <RootNamespace>CalendarSystem.Domain.Test.Standup</RootNamespace>
+    <AssemblyName>CalendarSystem.Domain.Test.Standup</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>CalendarSystem.Persistence</Name>
+    <Name>CalendarSystem.Domain.Test.Standup</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,13 +50,9 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="README.md" />
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="ISessionPersistence.fs" />
-    <Compile Include="ICalendarEventPersistence.fs" />
-    <Compile Include="IUserPersistence.fs" />
-    <Compile Include="IPersistence.fs" />
+    <Compile Include="Testing.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -76,9 +72,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utilities\Utilities.fsproj">
-      <Name>Utilities</Name>
-      <Project>{ab97a558-3288-453e-a672-e67c0b46437a}</Project>
+    <ProjectReference Include="..\CalendarSystem.Domain.Calendar.Impl.Server\CalendarSystem.Domain.Calendar.Impl.Server.fsproj">
+      <Name>CalendarSystem.Domain.Calendar.Impl.Server</Name>
+      <Project>{8973e971-8801-4bda-af4c-69e5ddb1b42f}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Domain.Membership.Impl.Server\CalendarSystem.Domain.Membership.Impl.Server.fsproj">
+      <Name>CalendarSystem.Domain.Membership.Impl.Server</Name>
+      <Project>{9f8cd9bd-9f12-409b-b140-2d5cfcd02694}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Model\CalendarSystem.Model.fsproj">
+      <Name>CalendarSystem.Model</Name>
+      <Project>{005f4ffc-fb1f-4049-8ac1-6cf18bd3c4f1}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Persistence.Impl.Memory\CalendarSystem.Persistence.Impl.Memory.fsproj">
+      <Name>CalendarSystem.Persistence.Impl.Memory</Name>
+      <Project>{b5b87db7-759a-4fbe-b4cd-4bedb27f75ea}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>c33a3726-5be6-4e2f-93e1-6929ac00731e</ProjectGuid>
+    <ProjectGuid>b94ffb5e-0b26-4058-8cdd-b6c8d3e887db</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CalendarSystem.Common</RootNamespace>
-    <AssemblyName>CalendarSystem.Common</AssemblyName>
+    <RootNamespace>CalendarSystem.Domain.Test</RootNamespace>
+    <AssemblyName>CalendarSystem.Domain.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>CalendarSystem.Common</Name>
+    <Name>CalendarSystem.Domain.Test</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,22 +50,25 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="README.md" />
     <Content Include="packages.config" />
+    <Content Include="App.config" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Id.fs" />
-    <Compile Include="SessionToken.fs" />
-    <Compile Include="Validation.fs" />
-    <Compile Include="Exceptions.fs" />
-    <Compile Include="EmailAddress.fs" />
-    <Compile Include="CalendarModel.fs" />
+    <Compile Include="DomainTestingUtilities.fs" />
+    <Compile Include="TestAuthentication.fs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core">
-      <Name>FSharp.Core</Name>
-      <AssemblyName>FSharp.Core.dll</AssemblyName>
-      <HintPath>$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\FSharp\.NETFramework\v4.0\$(TargetFSharpCoreVersion)\FSharp.Core.dll</HintPath>
+      <HintPath>..\packages\FSharp.Core.4.1.17\lib\net45\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FsUnit.NUnit">
+      <HintPath>..\packages\FsUnit.3.0.0\lib\net45\FsUnit.NUnit.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rezoom">
+      <HintPath>..\packages\Rezoom.0.3.0\lib\net45\Rezoom.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,6 +78,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CalendarSystem.Domain.Calendar\CalendarSystem.Domain.Calendar.fsproj">
+      <Name>CalendarSystem.Domain.Calendar</Name>
+      <Project>{373270f7-272b-49b6-af16-1fd9dcb291ce}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Domain.Membership\CalendarSystem.Domain.Membership.fsproj">
+      <Name>CalendarSystem.Domain.Membership</Name>
+      <Project>{77fb243f-6326-4529-a653-a970efb4380b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Domain.Test.Standup\CalendarSystem.Domain.Test.Standup.fsproj">
+      <Name>CalendarSystem.Domain.Test.Standup</Name>
+      <Project>{3dcc0aeb-f70c-4b6c-94cf-ff6c9d1ac973}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Model.Calendar\CalendarSystem.Model.Calendar.fsproj">
+      <Name>CalendarSystem.Model.Calendar</Name>
+      <Project>{b112dca0-d124-481d-a7f3-8a79640b6317}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Model.Membership\CalendarSystem.Model.Membership.fsproj">
+      <Name>CalendarSystem.Model.Membership</Name>
+      <Project>{50d1f452-bae6-4c64-8580-7135cef8bced}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Model\CalendarSystem.Model.fsproj">
+      <Name>CalendarSystem.Model</Name>
+      <Project>{005f4ffc-fb1f-4049-8ac1-6cf18bd3c4f1}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.fsproj">
       <Name>Utilities</Name>
       <Project>{ab97a558-3288-453e-a672-e67c0b46437a}</Project>

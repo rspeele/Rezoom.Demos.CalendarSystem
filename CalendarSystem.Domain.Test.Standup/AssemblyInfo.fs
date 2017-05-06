@@ -1,4 +1,4 @@
-﻿namespace CalendarSystem.Common.AssemblyInfo
+﻿namespace CalendarSystem.Domain.Test.Standup.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[<assembly: AssemblyTitle("CalendarSystem.Common")>]
+[<assembly: AssemblyTitle("CalendarSystem.Domain.Test.Standup")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("")>]
-[<assembly: AssemblyProduct("CalendarSystem.Common")>]
+[<assembly: AssemblyProduct("CalendarSystem.Domain.Test.Standup")>]
 [<assembly: AssemblyCopyright("Copyright ©  2017")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
@@ -22,7 +22,7 @@ open System.Runtime.InteropServices
 [<assembly: ComVisible(false)>]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[<assembly: Guid("c33a3726-5be6-4e2f-93e1-6929ac00731e")>]
+[<assembly: Guid("3dcc0aeb-f70c-4b6c-94cf-ff6c9d1ac973")>]
 
 // Version information for an assembly consists of the following four values:
 // 
@@ -36,8 +36,6 @@ open System.Runtime.InteropServices
 // [<assembly: AssemblyVersion("1.0.*")>]
 [<assembly: AssemblyVersion("1.0.0.0")>]
 [<assembly: AssemblyFileVersion("1.0.0.0")>]
-
-[<assembly: InternalsVisibleTo("CalendarSystem.Domain")>]
 
 do
     ()

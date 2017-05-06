@@ -13,3 +13,8 @@ type BugException(msg : string) =
 [<AutoOpen>]
 module BugUtilities =
     let inline bug msg = raise <| BugException(msg)
+
+    let assumeResultOk result =
+        match result with
+        | Ok x -> x
+        | Error msg -> bug msg

@@ -51,7 +51,9 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="SeedInfo.fs" />
     <Compile Include="MemoryStorage.fs" />
+    <Compile Include="ResetPerPlan.fs" />
     <Compile Include="Install.fs" />
     <Content Include="packages.config" />
   </ItemGroup>

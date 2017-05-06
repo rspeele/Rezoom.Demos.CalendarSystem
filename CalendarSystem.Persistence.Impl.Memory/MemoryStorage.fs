@@ -6,17 +6,26 @@ open CalendarSystem.Model.Calendar
 open System
 open System.Collections.Generic
 
-let private newId<'a> =
+module IdGeneration =
     let mutable counter = 0
-    fun () ->
+    let newId () =
         counter <- counter + 1
-        Id counter : 'a Id
+        Id counter
+    let resetIds () =
+        counter <- 0
+open IdGeneration
+open CalendarSystem.Persistence.Impl.Memory.SeedInfo
 
 let private store (dict : Dictionary<_ Id, _>) makeThing =
     let id = newId()
     let thing = makeThing id
     dict.[id] <- thing
     thing
+
+let private occurence sessionId =
+    {   Who = sessionId
+        When = DateTimeOffset.UtcNow
+    }
 
 type private StorageUser =
     {   User : User
@@ -28,15 +37,36 @@ let private sessions = Dictionary()
 let private calendarEvents = Dictionary()
 let private calendarEventVersions = Dictionary()
 
-let reset() =
+let nuke() =
     users.Clear()
     sessions.Clear()
     calendarEvents.Clear()
+    calendarEventVersions.Clear()
+    resetIds()
 
-let private occurence sessionId =
-    {   Who = sessionId
-        When = DateTimeOffset.UtcNow
-    }
+let seed() =
+    let initialUserId = newId()
+    let initialSession =
+        store sessions <| fun id ->
+            {   Id = id
+                UserId = initialUserId
+                Impersonated = None
+                Token = SessionToken.Generate()
+                Created = DateTimeOffset.UtcNow
+                ValidTo = DateTimeOffset.UtcNow.AddDays(1.0)
+            }
+    let initialUser =
+        {   User =
+                {   Id = initialUserId
+                    Name = "Root"
+                    Email = rootEmail
+                    Role = SuperUser
+                    Created = occurence initialSession.Id
+                    Updated = occurence initialSession.Id
+                }
+            UserAuthInfo = Choice1Of2 (UserPasswordHash.Generate(rootPass))
+        }
+    users.[initialUserId] <- initialUser
 
 module Users =
     let createUser createdBy email setupToken name role =

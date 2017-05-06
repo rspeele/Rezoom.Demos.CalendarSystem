@@ -3,61 +3,44 @@ open Rezoom
 open CalendarSystem.Persistence.Membership
 open CalendarSystem.Persistence.Calendar
 
+let private wrap x =
+    plan {
+        do! ResetPerPlan.requireReset
+        return x()
+    }
+
 let private userPersistence =
     { new IUserPersistence with
         member __.CreateUser(createdBy, email, setupToken, name, role) =
-            plan {
-                return Storage.Users.createUser createdBy email setupToken name role
-            }
+            wrap <| fun () -> Storage.Users.createUser createdBy email setupToken name role
         member __.GetUserByEmail(email) =
-            plan {
-                return Storage.Users.getUserByEmail email
-            }
+            wrap <| fun () -> Storage.Users.getUserByEmail email
         member __.GetUserById(id) =
-            plan {
-                return Storage.Users.getUserById id
-            }
+            wrap <| fun () -> Storage.Users.getUserById id
         member __.Update(updatedBy, updateUser, email, name) =
-            plan {
-                return Storage.Users.updateUser updatedBy updateUser email name
-            }
+            wrap <| fun () -> Storage.Users.updateUser updatedBy updateUser email name
         member __.UpdatePasswordHash(updatedBy, updateUser, hash) =
-            plan {
-                return Storage.Users.updateUserPassword updatedBy updateUser hash
-            }
-        
+            wrap <| fun () -> Storage.Users.updateUserPassword updatedBy updateUser hash
     }
 
 let private sessionPersistence =
     { new ISessionPersistence with
         member __.CreateSession(sessionToken, impersonator, sessionUserId, sessionValidTo) =
-            plan {
-                return Storage.Sessions.createSession sessionToken impersonator sessionUserId sessionValidTo
-            }
+            wrap <| fun () -> Storage.Sessions.createSession sessionToken impersonator sessionUserId sessionValidTo
         member __.GetValidSessionByToken(token) =
-            plan {
-                return Storage.Sessions.getValidSessionByToken token
-            }
+            wrap <| fun () -> Storage.Sessions.getValidSessionByToken token
     }
 
 let private calendarEventPersistence =
     { new ICalendarEventPersistence with
         member __.CreateCalendarEvent(createdBy, client, consultant, name, duration) =
-            plan {
-                return Storage.CalendarEvents.createCalendarEvent createdBy client consultant name duration
-            }
+            wrap <| fun () -> Storage.CalendarEvents.createCalendarEvent createdBy client consultant name duration
         member __.CreateCalendarEventVersion(createdBy, calendarEvent, consultant, name, duration) =
-            plan {
-                return Storage.CalendarEvents.createCalendarEventVersion createdBy calendarEvent consultant name duration
-            }
+            wrap <| fun () -> Storage.CalendarEvents.createCalendarEventVersion createdBy calendarEvent consultant name duration
         member __.DeleteCalendarEvent(deletedBy, calendarEvent) =
-            plan {
-                return Storage.CalendarEvents.deleteCalendarEvent deletedBy calendarEvent
-            }
+            wrap <| fun () -> Storage.CalendarEvents.deleteCalendarEvent deletedBy calendarEvent
         member __.GetCalendarEvents(filterToClient, filterToConsultant, touchesDuration) =
-            plan {
-                return Storage.CalendarEvents.getCalendarEvents filterToClient filterToConsultant touchesDuration
-            }
+            wrap <| fun () -> Storage.CalendarEvents.getCalendarEvents filterToClient filterToConsultant touchesDuration
     }
     
 let install () =
