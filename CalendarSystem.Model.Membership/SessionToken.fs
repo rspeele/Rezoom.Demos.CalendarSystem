@@ -55,6 +55,7 @@ type SessionToken =
     static member Generate() =
         SessionToken (SessionTokenGeneration.generateTokenOfLength 12)
 
+type SuperUserClaim = SuperUserClaim of SessionToken
 type AdminClaim = AdminClaim of SessionToken
 type ConsultantClaim = ConsultantClaim of SessionToken
 type ClientClaim = ClientClaim of SessionToken
@@ -64,11 +65,15 @@ type ClientClaim = ClientClaim of SessionToken
 /// but they provide a layer of type safety as well, not for security but for self-documenting code,
 /// that you can't try to call AdminService.DeleteEverything without passing it a ClaimAdmin.
 type Claim =
+    | ClaimingSuperUser of SuperUserClaim
     | ClaimingAdmin of AdminClaim
     | ClaimingConsultant of ConsultantClaim
     | ClaimingClient of ClientClaim
     member this.SessionToken =
+        // might be better to compose and have a { Token : SessionToken; ClaimCase : ClaimCase }
+        // but this way doesn't hurt too bad with just 4 cases
         match this with
+        | ClaimingSuperUser (SuperUserClaim t)
         | ClaimingAdmin (AdminClaim t)
         | ClaimingConsultant (ConsultantClaim t)
         | ClaimingClient (ClientClaim t) -> t

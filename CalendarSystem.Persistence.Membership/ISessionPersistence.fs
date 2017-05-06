@@ -9,6 +9,7 @@ type ISessionPersistence =
     /// Store a session.
     abstract member CreateSession
         : sessionToken : SessionToken
+        * impersonator : Session Id option
         * sessionUserId : User Id
         * sessionValidTo : DateTimeOffset
         -> Session Id Plan

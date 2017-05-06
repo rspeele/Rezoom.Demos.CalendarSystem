@@ -17,6 +17,8 @@ type Client =
 /// A user can be one of these three things.
 /// Some systems are fancier and let you be multiple roles at once but that doesn't really make sense here.
 type Role =
+    /// SuperUser -- a sr. developer or product owner who can go stomping around doing whatever they want.
+    | SuperUser
     /// Admin -- handles setting up new clients, invoicing, etc.
     | AdminUser
     /// Consultant -- logs on to view calendar, goes to customer sites to do work.
@@ -46,7 +48,10 @@ type UserPasswordHash =
 
 type Session =
     {   Id : Session Id
+        /// The user the session authenticate.
         UserId : User Id
+        /// If present, the super-user who created this session via impersonation.
+        Impersonated : Occurence option
         Token : SessionToken
         Created : DateTimeOffset
         ValidTo : DateTimeOffset
