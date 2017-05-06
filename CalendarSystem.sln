@@ -11,6 +11,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Utilities", "Utilities\Util
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain", "CalendarSystem.Domain\CalendarSystem.Domain.fsproj", "{990F5262-88E3-4FBF-9BCD-701FE819C0E4}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Server", "CalendarSystem.Domain.Server\CalendarSystem.Domain.Server.fsproj", "{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{990F5262-88E3-4FBF-9BCD-701FE819C0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{990F5262-88E3-4FBF-9BCD-701FE819C0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{990F5262-88E3-4FBF-9BCD-701FE819C0E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7FCC1D-3DF9-40FD-BA4E-55A53A6A310B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

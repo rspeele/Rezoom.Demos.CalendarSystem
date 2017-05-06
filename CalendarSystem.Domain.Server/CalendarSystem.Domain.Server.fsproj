@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>ab97a558-3288-453e-a672-e67c0b46437a</ProjectGuid>
+    <ProjectGuid>bf7fcc1d-3df9-40fd-ba4e-55a53a6a310b</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Utilities</RootNamespace>
-    <AssemblyName>Utilities</AssemblyName>
+    <RootNamespace>CalendarSystem.Domain.Server</RootNamespace>
+    <AssemblyName>CalendarSystem.Domain.Server</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>Utilities</Name>
+    <Name>CalendarSystem.Domain.Server</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,11 +50,8 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="README.md" />
-    <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="BugException.fs" />
-    <Compile Include="InclusiveRange.fs" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
