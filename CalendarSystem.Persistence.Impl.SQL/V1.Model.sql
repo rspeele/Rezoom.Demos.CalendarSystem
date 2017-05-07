@@ -54,4 +54,26 @@ create table CalendarEventVersions
     , ConsultantId int references Users(Id)
     );
 
-create index IX_CalendarEventVersions on CalendarEventVersions(IsCurrentVersion);
+create index IX_CalendarEventVersions_IsCurrentVersion on CalendarEventVersions(IsCurrentVersion);
+
+-- System tasks
+
+create table SystemTasks
+    ( Id int primary key autoincrement
+    , Scheduled datetimeoffset
+    , ScheduledFor datetimeoffset
+    , TaskType string(32)
+    , TaskJson string(256)
+    , TaskState int
+    , FailureMessage string(512) null
+    , FailureStackTrace string null
+    , RetryAfter datetimeoffset null
+    , ProcessingBy binary(16) null
+    , ProcessingStarted datetimeoffset null
+    , Completed datetimeoffset null
+    );
+
+create index IX_SystemTasks_TaskType on SystemTasks(TaskType);
+create index IX_SystemTasks_ProcessingBy on SystemTasks(ProcessingBy);
+create index IX_SystemTasks_TaskState_ScheduledFor on SystemTasks(TaskState, ScheduledFor);
+

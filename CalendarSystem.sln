@@ -44,8 +44,6 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Test"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.Impl.SQL", "CalendarSystem.Persistence.Impl.SQL\CalendarSystem.Persistence.Impl.SQL.fsproj", "{D0C959C7-9C48-4ED6-8C08-282695FFEF56}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SystemTasks", "SystemTasks", "{25AB162C-DDB7-4CE4-B791-A2526E745BB1}"
-EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Model.SystemTasks", "CalendarSystem.Model.SystemTasks\CalendarSystem.Model.SystemTasks.fsproj", "{47F993C9-F969-49BA-910F-0782F52BC331}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.SystemTasks", "CalendarSystem.Persistence.SystemTasks\CalendarSystem.Persistence.SystemTasks.fsproj", "{3C89A4DC-A077-48DD-B91D-EF4EAF6F505A}"
