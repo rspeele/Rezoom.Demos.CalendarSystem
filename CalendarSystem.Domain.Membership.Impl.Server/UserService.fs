@@ -1,9 +1,12 @@
 ﻿module private CalendarSystem.Domain.Membership.Impl.Server.UserService
+open System
 open Rezoom
-open CalendarSystem.Model.Membership
 open CalendarSystem.Persistence.Membership
 open CalendarSystem.Domain.Membership
 open CalendarSystem.Model
+open CalendarSystem.Model.SystemTasks
+open CalendarSystem.Model.Membership
+open CalendarSystem.Persistence.SystemTasks.Implementation
 
 let service =
     { new IUserService with
@@ -13,7 +16,7 @@ let service =
                 let create =
                     plan {
                         let setupToken = UserSetupToken.Generate()
-                        return!
+                        let! createdUserId =
                             MembershipPersistence.Users.CreateUser
                                 ( sessionId
                                 , email
@@ -21,6 +24,10 @@ let service =
                                 , name
                                 , role
                                 )
+                        let! _ =
+                            SystemTaskPersistence.EnqueueTask
+                                (DateTimeOffset.UtcNow, QueueSystemTask.userSetupToken setupToken)
+                        return createdUserId
                     }
                 return
                     match me.Role, role with

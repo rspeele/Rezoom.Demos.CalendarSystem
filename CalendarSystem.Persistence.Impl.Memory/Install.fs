@@ -2,6 +2,8 @@
 open Rezoom
 open CalendarSystem.Persistence.Membership
 open CalendarSystem.Persistence.Calendar
+open CalendarSystem.Persistence.SystemTasks
+open CalendarSystem.Persistence.SystemTasks.Processing
 
 let private wrap x =
     plan {
@@ -42,6 +44,20 @@ let private calendarEventPersistence =
         member __.GetCalendarEvents(filterToClient, filterToConsultant, touchesDuration) =
             wrap <| fun () -> Storage.CalendarEvents.getCalendarEvents filterToClient filterToConsultant touchesDuration
     }
+
+let private systemTasksPersistence =
+    { new ISystemTaskPersistence with
+        member __.EnqueueTask(scheduledFor, task) =
+            wrap <| fun () -> Storage.SystemTasks.enqueueTask scheduledFor task
+    }
+
+let private systemTasksPersistenceProcessing =
+    { new ISystemTaskPersistenceProcessing with
+        member __.DequeueTask(processingBy, filtertoType) =
+            wrap <| fun () -> Storage.SystemTasks.dequeueTask processingBy filtertoType
+        member __.CompleteTask(taskId, completion) =
+            wrap <| fun () -> Storage.SystemTasks.completeTask taskId completion
+    }
     
 let install () =
     { new ICalendarPersistence with
@@ -51,4 +67,6 @@ let install () =
         member __.Users = userPersistence
         member __.Sessions = sessionPersistence
     } |> Setup.useMembershipPersistence
+    Setup.useSystemTaskPersistence systemTasksPersistence
+    Setup.useSystemTaskPersistenceProcessing systemTasksPersistenceProcessing
 

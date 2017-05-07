@@ -44,6 +44,14 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Domain.Test"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.Impl.SQL", "CalendarSystem.Persistence.Impl.SQL\CalendarSystem.Persistence.Impl.SQL.fsproj", "{D0C959C7-9C48-4ED6-8C08-282695FFEF56}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SystemTasks", "SystemTasks", "{25AB162C-DDB7-4CE4-B791-A2526E745BB1}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Model.SystemTasks", "CalendarSystem.Model.SystemTasks\CalendarSystem.Model.SystemTasks.fsproj", "{47F993C9-F969-49BA-910F-0782F52BC331}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.SystemTasks", "CalendarSystem.Persistence.SystemTasks\CalendarSystem.Persistence.SystemTasks.fsproj", "{3C89A4DC-A077-48DD-B91D-EF4EAF6F505A}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.SystemTasks.Processing", "CalendarSystem.Persistence.SystemTasks.Processing\CalendarSystem.Persistence.SystemTasks.Processing.fsproj", "{0268C664-A916-4635-B3C4-05DC6671070F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +114,18 @@ Global
 		{D0C959C7-9C48-4ED6-8C08-282695FFEF56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0C959C7-9C48-4ED6-8C08-282695FFEF56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0C959C7-9C48-4ED6-8C08-282695FFEF56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47F993C9-F969-49BA-910F-0782F52BC331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47F993C9-F969-49BA-910F-0782F52BC331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47F993C9-F969-49BA-910F-0782F52BC331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47F993C9-F969-49BA-910F-0782F52BC331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C89A4DC-A077-48DD-B91D-EF4EAF6F505A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C89A4DC-A077-48DD-B91D-EF4EAF6F505A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C89A4DC-A077-48DD-B91D-EF4EAF6F505A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C89A4DC-A077-48DD-B91D-EF4EAF6F505A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0268C664-A916-4635-B3C4-05DC6671070F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0268C664-A916-4635-B3C4-05DC6671070F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0268C664-A916-4635-B3C4-05DC6671070F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0268C664-A916-4635-B3C4-05DC6671070F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +145,9 @@ Global
 		{3DCC0AEB-F70C-4B6C-94CF-FF6C9D1AC973} = {A19C7737-FCBB-47EA-AFBD-2426D654914E}
 		{B94FFB5E-0B26-4058-8CDD-B6C8D3E887DB} = {A19C7737-FCBB-47EA-AFBD-2426D654914E}
 		{D0C959C7-9C48-4ED6-8C08-282695FFEF56} = {CB57882E-9D77-4AD8-8C85-C3B9ADB3E05B}
+		{47F993C9-F969-49BA-910F-0782F52BC331} = {B533DCB7-2792-4474-8C88-FD7E619967AF}
+		{3C89A4DC-A077-48DD-B91D-EF4EAF6F505A} = {CB57882E-9D77-4AD8-8C85-C3B9ADB3E05B}
+		{0268C664-A916-4635-B3C4-05DC6671070F} = {CB57882E-9D77-4AD8-8C85-C3B9ADB3E05B}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true

@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>b5b87db7-759a-4fbe-b4cd-4bedb27f75ea</ProjectGuid>
+    <ProjectGuid>0268c664-a916-4635-b3c4-05dc6671070f</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CalendarSystem.Persistence.Impl.Memory</RootNamespace>
-    <AssemblyName>CalendarSystem.Persistence.Impl.Memory</AssemblyName>
+    <RootNamespace>CalendarSystem.Persistence.SystemTasks.Processing</RootNamespace>
+    <AssemblyName>CalendarSystem.Persistence.SystemTasks.Processing</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>CalendarSystem.Persistence.Impl.Memory</Name>
+    <Name>CalendarSystem.Persistence.SystemTasks.Processing</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,10 +51,8 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="SeedInfo.fs" />
-    <Compile Include="MemoryStorage.fs" />
-    <Compile Include="ResetPerPlan.fs" />
-    <Compile Include="Install.fs" />
+    <Compile Include="ISystemTaskPersistenceProcessing.fs" />
+    <Compile Include="SystemTaskPersistenceProcessing.fs" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -75,16 +73,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CalendarSystem.Model.Calendar\CalendarSystem.Model.Calendar.fsproj">
-      <Name>CalendarSystem.Model.Calendar</Name>
-      <Project>{b112dca0-d124-481d-a7f3-8a79640b6317}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\CalendarSystem.Model.Membership\CalendarSystem.Model.Membership.fsproj">
-      <Name>CalendarSystem.Model.Membership</Name>
-      <Project>{50d1f452-bae6-4c64-8580-7135cef8bced}</Project>
-      <Private>True</Private>
-    </ProjectReference>
     <ProjectReference Include="..\CalendarSystem.Model.SystemTasks\CalendarSystem.Model.SystemTasks.fsproj">
       <Name>CalendarSystem.Model.SystemTasks</Name>
       <Project>{47f993c9-f969-49ba-910f-0782f52bc331}</Project>
@@ -93,26 +81,6 @@
     <ProjectReference Include="..\CalendarSystem.Model\CalendarSystem.Model.fsproj">
       <Name>CalendarSystem.Model</Name>
       <Project>{005f4ffc-fb1f-4049-8ac1-6cf18bd3c4f1}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\CalendarSystem.Persistence.Calendar\CalendarSystem.Persistence.Calendar.fsproj">
-      <Name>CalendarSystem.Persistence.Calendar</Name>
-      <Project>{ec4d694b-74e4-45a3-a05d-7c8e66578e1b}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\CalendarSystem.Persistence.Membership\CalendarSystem.Persistence.Membership.fsproj">
-      <Name>CalendarSystem.Persistence.Membership</Name>
-      <Project>{9d6c8cc5-c64f-48f6-9d88-797ef1939f58}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\CalendarSystem.Persistence.SystemTasks.Processing\CalendarSystem.Persistence.SystemTasks.Processing.fsproj">
-      <Name>CalendarSystem.Persistence.SystemTasks.Processing</Name>
-      <Project>{0268c664-a916-4635-b3c4-05dc6671070f}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\CalendarSystem.Persistence.SystemTasks\CalendarSystem.Persistence.SystemTasks.fsproj">
-      <Name>CalendarSystem.Persistence.SystemTasks</Name>
-      <Project>{3c89a4dc-a077-48dd-b91d-ef4eaf6f505a}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.fsproj">

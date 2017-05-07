@@ -84,6 +84,11 @@
       <Project>{50d1f452-bae6-4c64-8580-7135cef8bced}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Model.SystemTasks\CalendarSystem.Model.SystemTasks.fsproj">
+      <Name>CalendarSystem.Model.SystemTasks</Name>
+      <Project>{47f993c9-f969-49ba-910f-0782f52bc331}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\CalendarSystem.Model\CalendarSystem.Model.fsproj">
       <Name>CalendarSystem.Model</Name>
       <Project>{005f4ffc-fb1f-4049-8ac1-6cf18bd3c4f1}</Project>
@@ -92,6 +97,11 @@
     <ProjectReference Include="..\CalendarSystem.Persistence.Membership\CalendarSystem.Persistence.Membership.fsproj">
       <Name>CalendarSystem.Persistence.Membership</Name>
       <Project>{9d6c8cc5-c64f-48f6-9d88-797ef1939f58}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Persistence.SystemTasks\CalendarSystem.Persistence.SystemTasks.fsproj">
+      <Name>CalendarSystem.Persistence.SystemTasks</Name>
+      <Project>{3c89a4dc-a077-48dd-b91d-ef4eaf6f505a}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.fsproj">

@@ -15,6 +15,7 @@ module IdGeneration =
         counter <- 0
 open IdGeneration
 open CalendarSystem.Persistence.Impl.Memory.SeedInfo
+open CalendarSystem.Model.SystemTasks
 
 let private store (dict : Dictionary<_ Id, _>) makeThing =
     let id = newId()
@@ -37,16 +38,24 @@ type private StorageCalendarEvent =
         Deleted : Occurence option
     }
 
+type private StorageSystemTask =
+    {   Id : SystemTask Id
+        Task : SystemTask
+        State : SystemTaskState
+    }
+
 let private users = Dictionary()
 let private sessions = Dictionary()
 let private calendarEvents = Dictionary()
 let private calendarEventVersions = Dictionary()
+let private systemTasks = Dictionary()
 
 let nuke() =
     users.Clear()
     sessions.Clear()
     calendarEvents.Clear()
     calendarEventVersions.Clear()
+    systemTasks.Clear()
     resetIds()
 
 let seed() =
@@ -185,8 +194,44 @@ module CalendarEvents =
         |> ResizeArray
         :> _ IReadOnlyList
 
+module SystemTasks =
+    let enqueueTask (scheduledFor : DateTimeOffset) (task : SystemTask) =
+        let stored =
+            store systemTasks <| fun id ->
+                {   Id = id
+                    Task = task
+                    State = SystemTaskScheduledFor scheduledFor
+                }
+        stored.Id
 
+    let dequeueTask processingBy (filterToType : SystemTaskType option) =
+        let now = DateTimeOffset.UtcNow
+        let found =
+            systemTasks.Values
+            |> Seq.filter (fun t ->
+                match t.State with
+                | SystemTaskScheduledFor time
+                | SystemTaskCompleted (SystemTaskFailed { RetryAfter = Some time }) ->
+                    time <= now
+                | _ -> false)
+            |> (match filterToType with
+                | None -> id
+                | Some ty -> Seq.filter (fun t -> t.Task.TaskType = ty))
+            |> Seq.tryHead
+        match found with
+        | None -> None
+        | Some found ->
+            let newState =
+                { found with
+                    State = SystemTaskInProcess { ProcessingBy = processingBy; ProcessingStarted = now }
+                }
+            systemTasks.[newState.Id] <- newState
+            Some (newState.Id, newState.Task)
 
-
-    
-
+    let completeTask taskId completion =
+        let existing = systemTasks.[taskId]
+        systemTasks.[taskId] <-
+            { existing with
+                State = SystemTaskCompleted completion
+            }
+               
