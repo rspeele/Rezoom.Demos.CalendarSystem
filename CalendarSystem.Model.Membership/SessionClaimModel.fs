@@ -11,10 +11,9 @@ module private SessionTokenGeneration =
 
 /// Secure session token (random string generated for each session).
 type SessionToken =
-    private
     | SessionToken of string
     // A 12-character alphanumeric (case sensitive) string representing the session token.
-    member this.TokenString = let (SessionToken str) = this in str
+    override this.ToString() = let (SessionToken str) = this in str
     // 12 is a good length: 62^12 is on the order of (1 trillion * 1 billion) possibilities,
     // so nobody's going to be guessing a valid session token.
     static member Generate() =

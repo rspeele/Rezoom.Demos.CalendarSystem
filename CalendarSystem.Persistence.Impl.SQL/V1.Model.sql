@@ -21,10 +21,12 @@ create table Sessions
     ( Id int primary key autoincrement
     , UserId int references Users(Id)
     , Token string(12) unique
-    , ImpersonatedBy int references Sessions(Id)
+    , ImpersonatedBy int null references Sessions(Id)
     , Created datetimeoffset
     , ValidTo datetimeoffset
     );
+
+create index IX_Sessions_ValidTo on Sessions(ValidTo);
 
 alter table Users add column CreatedBy int references Sessions(Id);
 alter table Users add column UpdatedBy int references Sessions(Id);

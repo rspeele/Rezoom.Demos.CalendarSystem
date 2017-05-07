@@ -7,26 +7,7 @@ open Rezoom.SQL
 open Rezoom.SQL.Plans
 open System.IO
 open System
-
-let dbOfRole role =
-    match role with
-    | SuperUser -> "SUPER", None
-    | AdminUser -> "ADMIN", None
-    | ConsultantUser -> "CONSULT", None
-    | ClientUser (Id id) -> "CLIENT", Some id
-
-let dbToRole str clientId =
-    match str, clientId with
-    | "SUPER", None -> SuperUser
-    | "ADMIN", None -> AdminUser
-    | "CONSULT", None -> ConsultantUser
-    | "CLIENT", Some id -> ClientUser (Id id)
-    | _ -> raise <| InvalidDataException("Invalid role storage")
-
-let occurence sessionId dt =
-    {   Who = Id sessionId
-        When = dt
-    }
+open CalendarSystem.Persistence.Impl.SQL.Mapping
 
 type private CreateUserSQL = SQL<"""
     insert into Users row
@@ -43,7 +24,7 @@ type private CreateUserSQL = SQL<"""
     select scope_identity() as id;
 """>
 
-let createUser (Id createdBy) (email : EmailAddress) (UserSetupToken setupToken) name role =
+let private createUser (Id createdBy) (email : EmailAddress) (UserSetupToken setupToken) name role =
     plan {
         let roleString, clientId = dbOfRole role
         let cmd =
@@ -62,7 +43,7 @@ let createUser (Id createdBy) (email : EmailAddress) (UserSetupToken setupToken)
 
 type private GetUserByEmailSQL = SQL<"select * from Users where Email = @email">
 
-let getUserByEmail (email : EmailAddress) =
+let private getUserByEmail (email : EmailAddress) =
     plan {
         let! found = GetUserByEmailSQL.Command(string email).TryExactlyOne()
         return
@@ -83,7 +64,7 @@ type private GetUserByIdSQL = SQL<"""
     where Id = @id
 """>
 
-let getUserById (Id id) =
+let private getUserById (Id id) =
     plan {
         let! row = GetUserByIdSQL.Command(id).ExactlyOne()
         return
@@ -105,7 +86,7 @@ type private UpdateUserSQL = SQL<"""
     where Id = @id
 """>
 
-let updateUser (Id updatedBy) (Id updateUser) (email : EmailAddress) name =
+let private updateUser (Id updatedBy) (Id updateUser) (email : EmailAddress) name =
     let cmd =
         UpdateUserSQL.Command
             ( id = updateUser
@@ -125,7 +106,7 @@ type private UpdatePasswordSQL = SQL<"""
     where Id = @id
 """>
 
-let updatePassword (Id updatedBy) (Id updateUser) password =
+let private updatePassword (Id updatedBy) (Id updateUser) password =
     let hash = PasswordHash.generate password
     let cmd =
         UpdatePasswordSQL.Command

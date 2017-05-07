@@ -55,7 +55,9 @@
     <None Include="V1.Model.sql" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="PasswordHash.fs" />
+    <Compile Include="Mapping.fs" />
     <Compile Include="UserPersistence.fs" />
+    <Compile Include="SessionPersistence.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net">
