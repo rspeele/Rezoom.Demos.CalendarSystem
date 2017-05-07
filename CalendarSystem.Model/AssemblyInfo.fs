@@ -40,6 +40,7 @@ open System.Runtime.InteropServices
 // Let these assemblies work with the underlying represention of Ids.
 
 [<assembly: InternalsVisibleTo("CalendarSystem.Persistence.Impl.Memory")>]
+[<assembly: InternalsVisibleTo("CalendarSystem.Persistence.Impl.SQL")>]
 
 do
     ()

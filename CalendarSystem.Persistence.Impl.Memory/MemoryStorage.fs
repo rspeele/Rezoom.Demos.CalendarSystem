@@ -50,7 +50,7 @@ let seed() =
         store sessions <| fun id ->
             {   Id = id
                 UserId = initialUserId
-                Impersonated = None
+                ImpersonatedBy = None
                 Token = SessionToken.Generate()
                 Created = DateTimeOffset.UtcNow
                 ValidTo = DateTimeOffset.UtcNow.AddDays(1.0)
@@ -107,7 +107,7 @@ module Sessions =
         let session =
             {   Id = newId()
                 UserId = sessionUserId
-                Impersonated = impersonator |> Option.map occurence
+                ImpersonatedBy = impersonator
                 Token = sessionToken
                 Created = DateTimeOffset.UtcNow
                 ValidTo = sessionValidTo

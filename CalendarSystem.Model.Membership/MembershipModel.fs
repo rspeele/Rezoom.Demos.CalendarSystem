@@ -73,7 +73,7 @@ type Session =
         /// The user the session authenticate.
         UserId : User Id
         /// If present, the super-user who created this session via impersonation.
-        Impersonated : Occurence option
+        ImpersonatedBy : Session Id option
         Token : SessionToken
         Created : DateTimeOffset
         ValidTo : DateTimeOffset
