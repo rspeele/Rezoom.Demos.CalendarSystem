@@ -1,0 +1,19 @@
+﻿@model IReadOnlyList<CalendarSystem.Model.Calendar.CalendarEvent>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Calendar Events</h1>
+
+<div>
+    <table>
+        @foreach (var row in Model)
+        {
+            <tr>
+                <td>@row.CurrentVersion.Name</td>
+                <td>@row.CurrentVersion.Duration.First</td>
+                <td>@row.CurrentVersion.Duration.Last</td>
+            </tr>
+        }
+    </table>
+</div>

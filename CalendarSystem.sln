@@ -50,6 +50,12 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Persistence.SystemTasks.Processing", "CalendarSystem.Persistence.SystemTasks.Processing\CalendarSystem.Persistence.SystemTasks.Processing.fsproj", "{0268C664-A916-4635-B3C4-05DC6671070F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{F8F5C028-F9F9-46CE-81A6-A9C7F452D56A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarSystem.Product.MVCWebApplication", "CalendarSystem.Product.MVCWebApplication\CalendarSystem.Product.MVCWebApplication.csproj", "{AA6A205A-5631-4725-8C96-AE4CC280C92C}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Product.MVCWebApplication.Standup", "CalendarSystem.Product.MVCWebApplication.Standup\CalendarSystem.Product.MVCWebApplication.Standup.fsproj", "{9AD25CA7-80A2-42CE-B623-E03128511944}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,6 +130,14 @@ Global
 		{0268C664-A916-4635-B3C4-05DC6671070F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0268C664-A916-4635-B3C4-05DC6671070F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0268C664-A916-4635-B3C4-05DC6671070F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA6A205A-5631-4725-8C96-AE4CC280C92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA6A205A-5631-4725-8C96-AE4CC280C92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA6A205A-5631-4725-8C96-AE4CC280C92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA6A205A-5631-4725-8C96-AE4CC280C92C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD25CA7-80A2-42CE-B623-E03128511944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD25CA7-80A2-42CE-B623-E03128511944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD25CA7-80A2-42CE-B623-E03128511944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD25CA7-80A2-42CE-B623-E03128511944}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,6 +160,8 @@ Global
 		{47F993C9-F969-49BA-910F-0782F52BC331} = {B533DCB7-2792-4474-8C88-FD7E619967AF}
 		{3C89A4DC-A077-48DD-B91D-EF4EAF6F505A} = {CB57882E-9D77-4AD8-8C85-C3B9ADB3E05B}
 		{0268C664-A916-4635-B3C4-05DC6671070F} = {CB57882E-9D77-4AD8-8C85-C3B9ADB3E05B}
+		{AA6A205A-5631-4725-8C96-AE4CC280C92C} = {F8F5C028-F9F9-46CE-81A6-A9C7F452D56A}
+		{9AD25CA7-80A2-42CE-B623-E03128511944} = {F8F5C028-F9F9-46CE-81A6-A9C7F452D56A}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true

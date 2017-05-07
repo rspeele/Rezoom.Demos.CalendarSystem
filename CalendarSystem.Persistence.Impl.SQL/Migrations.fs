@@ -9,8 +9,8 @@ open CalendarSystem.Model.Membership
 
 type private Model = SQLModel<".">
 
-type SeedCheckSQL = SQL<"select exists(select null as it from Users where Role = 'SUPER') as ThingsExist">
-type SeedCreateSQL = SQL<"""
+type private SeedCheckSQL = SQL<"select exists(select null as it from Users where Role = 'SUPER') as ThingsExist">
+type private SeedCreateSQL = SQL<"""
     insert into Users row
         Name = @name
         , Email = @email
@@ -25,6 +25,10 @@ type SeedCreateSQL = SQL<"""
         , Created = @now
         , ValidTo = @now
         ;
+    update Users set
+        CreatedBy = (select Id as it from Sessions where Token = @token)
+        , UpdatedBy = (select Id as it from Sessions where Token = @token)
+    where Email = @email;
 """>
 
 let private seed () =

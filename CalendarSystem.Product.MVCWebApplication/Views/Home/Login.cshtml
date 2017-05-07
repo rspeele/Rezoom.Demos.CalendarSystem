@@ -1,0 +1,20 @@
+﻿@model CalendarSystem.Product.MVCWebApplication.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    <span>Email</span>
+    @Html.TextBoxFor(m => m.Email)
+    <br />
+    <br />
+    <span>Password</span>
+    @Html.PasswordFor(m => m.Password)
+
+    <br/>
+    <input type="submit" value="Log in"/>
+}
+
