@@ -11,11 +11,11 @@ type IUserService =
         -> User Plan
     
     abstract member CreateUser
-        : claim : AdminClaim
+        : claim : Claim
         * email : EmailAddress
         * name : string
         * role : Role
-        -> User Id Plan
+        -> User Id Plan ValidationResult Plan
 
 type IAuthenticationService =
     /// If you supply a username and password, you may be able get a valid claim and an estimate of

@@ -2,6 +2,7 @@
 open Rezoom
 open NUnit.Framework
 open FsUnit
+open CalendarSystem.Model
 open CalendarSystem.Model.Membership
 open CalendarSystem.Domain.Test
 open CalendarSystem.Domain.Membership
@@ -24,6 +25,17 @@ let ``Can't log in with bogus credentials for root user`` () =
         let password = InputPassword.OfString("garblewarbleflorp") |> assumeResultOk
         let! loginResult =
             Membership.Authentication.Login(Testing.rootEmail, password)
+        match loginResult with
+        | Some _ -> bug "We should not get a claim from this"
+        | None -> ()
+    } |> Testing.runPlan
+
+[<Test>]
+let ``Can't log in with other email and root password`` () =
+    plan {
+        let email = EmailAddress.OfString("rando@example.com") |> assumeResultOk
+        let! loginResult =
+            Membership.Authentication.Login(email, Testing.rootPass)
         match loginResult with
         | Some _ -> bug "We should not get a claim from this"
         | None -> ()

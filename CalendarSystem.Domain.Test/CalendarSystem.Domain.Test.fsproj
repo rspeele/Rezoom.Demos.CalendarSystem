@@ -55,6 +55,7 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="DomainTestingUtilities.fs" />
     <Compile Include="TestAuthentication.fs" />
+    <Compile Include="TestUsers.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
