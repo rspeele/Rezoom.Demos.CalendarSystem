@@ -28,8 +28,8 @@ create table Sessions
 
 create index IX_Sessions_ValidTo on Sessions(ValidTo);
 
-alter table Users add column CreatedBy int references Sessions(Id);
-alter table Users add column UpdatedBy int references Sessions(Id);
+alter table Users add column CreatedBy int null references Sessions(Id);
+alter table Users add column UpdatedBy int null references Sessions(Id);
 
 -- Calendar
 
@@ -45,6 +45,7 @@ create table CalendarEvents
 create table CalendarEventVersions
     ( Id int primary key autoincrement
     , CalendarEventId int references CalendarEvents(Id)
+    , IsCurrentVersion bool
     , Name string(128)
     , DurationFirst datetimeoffset
     , DurationLast datetimeoffset
@@ -52,3 +53,5 @@ create table CalendarEventVersions
     , CreatedBy int references Sessions(Id)
     , ConsultantId int references Users(Id)
     );
+
+create index IX_CalendarEventVersions on CalendarEventVersions(IsCurrentVersion);

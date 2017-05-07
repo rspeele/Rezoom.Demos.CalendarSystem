@@ -11,7 +11,6 @@ type CalendarEvent =
     {   Id : CalendarEvent Id
         ClientId : Client Id
         Created : Occurence
-        Deleted : Occurence option
         CurrentVersion : CalendarEventVersion
     }
 

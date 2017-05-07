@@ -32,6 +32,11 @@ type private StorageUser =
         UserAuthInfo : Choice<UserPasswordHash, UserSetupToken>
     }
 
+type private StorageCalendarEvent =
+    {   CalendarEvent : CalendarEvent
+        Deleted : Occurence option
+    }
+
 let private users = Dictionary()
 let private sessions = Dictionary()
 let private calendarEvents = Dictionary()
@@ -133,10 +138,9 @@ module CalendarEvents =
             {   Id = eventId
                 ClientId = client
                 Created = occurence createdBy
-                Deleted = None
                 CurrentVersion = version
             }
-        calendarEvents.[event.Id] <- event
+        calendarEvents.[event.Id] <- { CalendarEvent = event; Deleted = None }
         event.Id
 
     let createCalendarEventVersion createdBy calendarEvent consultant name duration =
@@ -150,7 +154,8 @@ module CalendarEvents =
         let event = calendarEvents.[calendarEvent]
         calendarEvents.[calendarEvent] <-
             { event with
-                CurrentVersion = version
+                CalendarEvent =
+                    { event.CalendarEvent with CurrentVersion = version }
             }
         version.Id
 
@@ -162,7 +167,10 @@ module CalendarEvents =
             }
 
     let getCalendarEvents filterToClient filterToConsultant touchesDuration =
-        let events = calendarEvents.Values :> _ seq
+        let events =
+            calendarEvents.Values
+            |> Seq.filter (fun c -> Option.isNone c.Deleted)
+            |> Seq.map (fun c -> c.CalendarEvent)
         let events =
             match filterToClient with
             | None -> events

@@ -58,6 +58,9 @@
     <Compile Include="Mapping.fs" />
     <Compile Include="UserPersistence.fs" />
     <Compile Include="SessionPersistence.fs" />
+    <Compile Include="CalendarEventPersistence.fs" />
+    <Compile Include="Migrations.fs" />
+    <Compile Include="Install.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net">

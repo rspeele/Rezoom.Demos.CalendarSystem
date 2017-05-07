@@ -8,7 +8,7 @@ open Rezoom.SQL.Plans
 open System
 open CalendarSystem.Persistence.Impl.SQL.Mapping
 
-type CreateSessionSQL = SQL<"""
+type private CreateSessionSQL = SQL<"""
     insert into Sessions row
         Token = @token
         , UserId = @userId
@@ -19,7 +19,7 @@ type CreateSessionSQL = SQL<"""
     select scope_identity() as id;
 """>
 
-let createSession (SessionToken token) impersonator (Id userId) sessionValidTo =
+let private createSession (SessionToken token) impersonator (Id userId) sessionValidTo =
     plan {
         let cmd =
             CreateSessionSQL.Command
@@ -36,38 +36,35 @@ let createSession (SessionToken token) impersonator (Id userId) sessionValidTo =
         return Id id
     }
 
-type GetValidSessionByTokenSQL = SQL<"""
+type private GetValidSessionByTokenSQL = SQL<"""
     select *, one User(u.*)
     from Sessions s
     join Users u on u.Id = s.UserId
     where s.Token = @token and s.ValidTo >= @now
 """>
 
-let getValidSessionByToken (SessionToken token) =
+let private getValidSessionByToken (SessionToken token) =
     plan {
         let! row = GetValidSessionByTokenSQL.Command(token = token, now = DateTimeOffset.UtcNow).TryExactlyOne()
-        return
-            match row with
-            | None -> None
-            | Some row ->
-                let session =
-                    {   Id = Id row.Id
-                        UserId = Id row.UserId
-                        ImpersonatedBy = row.ImpersonatedBy |> Option.map Id
-                        Token = SessionToken row.Token
-                        Created = row.Created
-                        ValidTo = row.ValidTo
-                    }
-                let user =
-                    let user = row.User
-                    {   Id = Id user.Id
-                        Name = user.Name
-                        Email = EmailAddress.OfString(user.Email) |> assumeResultOk
-                        Created = occurence user.CreatedBy user.Created
-                        Updated = occurence user.UpdatedBy user.Updated
-                        Role = dbToRole user.Role user.ClientId
-                    }
-                Some (session, user)
+        return row |> Option.map (fun row ->
+            let session =
+                {   Id = Id row.Id
+                    UserId = Id row.UserId
+                    ImpersonatedBy = row.ImpersonatedBy |> Option.map Id
+                    Token = SessionToken row.Token
+                    Created = row.Created
+                    ValidTo = row.ValidTo
+                }
+            let user =
+                let user = row.User
+                {   Id = Id user.Id
+                    Name = user.Name
+                    Email = EmailAddress.OfString(user.Email) |> assumeResultOk
+                    Created = occurence (Option.get user.CreatedBy) user.Created
+                    Updated = occurence (Option.get user.UpdatedBy) user.Updated
+                    Role = dbToRole user.Role user.ClientId
+                }
+            (session, user))
     }
 
 let sessionPersistence =

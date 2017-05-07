@@ -32,7 +32,7 @@ let private createUser (Id createdBy) (email : EmailAddress) (UserSetupToken set
                 ( clientId = clientId
                 , role = roleString
                 , created = DateTimeOffset.UtcNow
-                , createdBy = createdBy
+                , createdBy = Some createdBy
                 , email = string email
                 , name = name
                 , setupToken = Some setupToken
@@ -51,8 +51,8 @@ let private getUserByEmail (email : EmailAddress) =
                 {   Id = Id row.Id
                     Name = row.Name
                     Email = EmailAddress.OfString(row.Email) |> assumeResultOk
-                    Created = occurence row.CreatedBy row.Created
-                    Updated = occurence row.UpdatedBy row.Updated
+                    Created = occurence (Option.get row.CreatedBy) row.Created
+                    Updated = occurence (Option.get row.UpdatedBy) row.Updated
                     Role = dbToRole row.Role row.ClientId
                 }, row.PasswordHash |> Option.map PasswordHash.verify)
     }
@@ -71,8 +71,8 @@ let private getUserById (Id id) =
             {   Id = Id row.Id
                 Name = row.Name
                 Email = EmailAddress.OfString(row.Email) |> assumeResultOk
-                Created = occurence row.CreatedBy row.Created
-                Updated = occurence row.UpdatedBy row.Updated
+                Created = occurence (Option.get row.CreatedBy) row.Created
+                Updated = occurence (Option.get row.UpdatedBy) row.Updated
                 Role = dbToRole row.Role row.ClientId
             }
     }
@@ -90,7 +90,7 @@ let private updateUser (Id updatedBy) (Id updateUser) (email : EmailAddress) nam
     let cmd =
         UpdateUserSQL.Command
             ( id = updateUser
-            , updatedBy = updatedBy
+            , updatedBy = Some updatedBy
             , updated = DateTimeOffset.UtcNow
             , email = string email
             , name = name
@@ -110,7 +110,7 @@ let private updatePassword (Id updatedBy) (Id updateUser) password =
     let hash = PasswordHash.generate password
     let cmd =
         UpdatePasswordSQL.Command
-            (hash = Some hash, updated = DateTimeOffset.UtcNow, updatedBy = updatedBy, id = updateUser)
+            (hash = Some hash, updated = DateTimeOffset.UtcNow, updatedBy = Some updatedBy, id = updateUser)
     cmd.Plan()
 
 let userPersistence =
