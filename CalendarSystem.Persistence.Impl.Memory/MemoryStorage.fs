@@ -44,6 +44,10 @@ let nuke() =
     calendarEventVersions.Clear()
     resetIds()
 
+// move this out of seed method so it doesn't have to run every time we stand up
+// the in-memory environment - it's slow by design!
+let private rootHash = Choice1Of2 (UserPasswordHash.Generate(rootPass))
+
 let seed() =
     let initialUserId = newId()
     let initialSession =
@@ -64,7 +68,7 @@ let seed() =
                     Created = occurence initialSession.Id
                     Updated = occurence initialSession.Id
                 }
-            UserAuthInfo = Choice1Of2 (UserPasswordHash.Generate(rootPass))
+            UserAuthInfo = rootHash
         }
     users.[initialUserId] <- initialUser
 

@@ -41,6 +41,7 @@ let ``Result of log in as root is a valid claim`` () =
                 bug "Different email address"
         | _ -> bug "Root should be a super user"
     } |> Testing.runPlan
+
 [<Test>]
 let ``Bogus session token is not a valid claim`` () =
     plan {
