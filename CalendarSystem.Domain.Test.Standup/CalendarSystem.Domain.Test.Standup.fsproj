@@ -82,6 +82,11 @@
       <Project>{9f8cd9bd-9f12-409b-b140-2d5cfcd02694}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Model.Membership\CalendarSystem.Model.Membership.fsproj">
+      <Name>CalendarSystem.Model.Membership</Name>
+      <Project>{50d1f452-bae6-4c64-8580-7135cef8bced}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\CalendarSystem.Model\CalendarSystem.Model.fsproj">
       <Name>CalendarSystem.Model</Name>
       <Project>{005f4ffc-fb1f-4049-8ac1-6cf18bd3c4f1}</Project>

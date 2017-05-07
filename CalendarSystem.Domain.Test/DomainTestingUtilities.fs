@@ -6,8 +6,7 @@ open CalendarSystem.Domain.Membership
 
 let loginAsRoot =
     plan {
-        let password = InputPassword.OfString(Testing.rootPass) |> assumeResultOk
-        let! claim = Membership.Authentication.Login(Testing.rootEmail, password)
+        let! claim = Membership.Authentication.Login(Testing.rootEmail, Testing.rootPass)
         return
             match claim with
             | Some (claim, _) -> claim

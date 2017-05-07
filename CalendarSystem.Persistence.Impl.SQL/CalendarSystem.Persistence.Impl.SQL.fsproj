@@ -5,14 +5,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>50d1f452-bae6-4c64-8580-7135cef8bced</ProjectGuid>
+    <ProjectGuid>d0c959c7-9c48-4ed6-8c08-282695ffef56</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>CalendarSystem.Model.Membership</RootNamespace>
-    <AssemblyName>CalendarSystem.Model.Membership</AssemblyName>
+    <RootNamespace>CalendarSystem.Persistence.Impl.SQL</RootNamespace>
+    <AssemblyName>CalendarSystem.Persistence.Impl.SQL</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>CalendarSystem.Model.Membership</Name>
+    <Name>CalendarSystem.Persistence.Impl.SQL</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,27 +52,76 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="SessionClaimModel.fs" />
-    <Compile Include="MembershipModel.fs" />
+    <Compile Include="PasswordHash.fs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net">
+      <HintPath>..\packages\BCrypt.Net.0.1.0\lib\net35\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="FParsec">
+      <HintPath>..\packages\FParsec.1.0.2\lib\net40-client\FParsec.dll</HintPath>
+    </Reference>
+    <Reference Include="FParsec-Pipes">
+      <HintPath>..\packages\FParsec-Pipes.0.3.1.0\lib\net45\FParsec-Pipes.dll</HintPath>
+    </Reference>
+    <Reference Include="FParsecCS">
+      <HintPath>..\packages\FParsec.1.0.2\lib\net40-client\FParsecCS.dll</HintPath>
+    </Reference>
+    <Reference Include="LicenseToCIL">
+      <HintPath>..\packages\LicenseToCIL.0.3.0\lib\net45\LicenseToCIL.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core">
       <Name>FSharp.Core</Name>
       <AssemblyName>FSharp.Core.dll</AssemblyName>
       <HintPath>$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\FSharp\.NETFramework\v4.0\$(TargetFSharpCoreVersion)\FSharp.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Rezoom">
+      <HintPath>..\packages\Rezoom.0.3.0\lib\net45\Rezoom.dll</HintPath>
+    </Reference>
+    <Reference Include="Rezoom.SQL.Compiler">
+      <HintPath>..\packages\Rezoom.SQL.Provider.0.4.7.39338\lib\net45\Rezoom.SQL.Compiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Rezoom.SQL.Mapping">
+      <HintPath>..\packages\Rezoom.SQL.Provider.0.4.7.39338\lib\net45\Rezoom.SQL.Mapping.dll</HintPath>
+    </Reference>
+    <Reference Include="Rezoom.SQL.Provider">
+      <HintPath>..\packages\Rezoom.SQL.Provider.0.4.7.39338\lib\net45\Rezoom.SQL.Provider.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.ValueTuple">
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CalendarSystem.Model.Calendar\CalendarSystem.Model.Calendar.fsproj">
+      <Name>CalendarSystem.Model.Calendar</Name>
+      <Project>{b112dca0-d124-481d-a7f3-8a79640b6317}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Model.Membership\CalendarSystem.Model.Membership.fsproj">
+      <Name>CalendarSystem.Model.Membership</Name>
+      <Project>{50d1f452-bae6-4c64-8580-7135cef8bced}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\CalendarSystem.Model\CalendarSystem.Model.fsproj">
       <Name>CalendarSystem.Model</Name>
       <Project>{005f4ffc-fb1f-4049-8ac1-6cf18bd3c4f1}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Persistence.Calendar\CalendarSystem.Persistence.Calendar.fsproj">
+      <Name>CalendarSystem.Persistence.Calendar</Name>
+      <Project>{ec4d694b-74e4-45a3-a05d-7c8e66578e1b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\CalendarSystem.Persistence.Membership\CalendarSystem.Persistence.Membership.fsproj">
+      <Name>CalendarSystem.Persistence.Membership</Name>
+      <Project>{9d6c8cc5-c64f-48f6-9d88-797ef1939f58}</Project>
       <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.fsproj">

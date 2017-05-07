@@ -44,8 +44,8 @@ let service =
                 match user with
                 | None -> return None
                 | Some (_, None) -> return None // they haven't set up their password yet
-                | Some (user, Some hash) ->
-                    if hash.Verify(password.Text) then
+                | Some (user, Some verify) ->
+                    if verify password then
                         let token = SessionToken.Generate()
                         let expiration = DateTimeOffset.UtcNow + TimeSpan.OfDays(normalSessionLength)
                         let! _ = MembershipPersistence.Sessions.CreateSession(token, None, user.Id, expiration)

@@ -19,8 +19,8 @@ let private userPersistence =
             wrap <| fun () -> Storage.Users.getUserById id
         member __.Update(updatedBy, updateUser, email, name) =
             wrap <| fun () -> Storage.Users.updateUser updatedBy updateUser email name
-        member __.UpdatePasswordHash(updatedBy, updateUser, hash) =
-            wrap <| fun () -> Storage.Users.updateUserPassword updatedBy updateUser hash
+        member __.UpdatePassword(updatedBy, updateUser, password) =
+            wrap <| fun () -> Storage.Users.updateUserPassword updatedBy updateUser password
     }
 
 let private sessionPersistence =

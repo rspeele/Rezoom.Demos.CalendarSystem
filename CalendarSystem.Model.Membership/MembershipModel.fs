@@ -48,20 +48,25 @@ type UserSetupToken =
     | UserSetupToken of string
     static member Generate() =
         /// Almost 3 trillion possibilities -- nobody should be able to guess one during the time it's valid
-        UserSetupToken (SecureRandomString.ofLength 8 "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" )
+        UserSetupToken (SecureRandomString.ofLength 8 "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+
+        /// Represents a plain-text password we input.
+/// We don't keep these around for long -- we certainly don't store them.
+/// Using a wrapper keeps the password rules consistent.
+type InputPassword =
+    private
+    | InputPassword of string
+    static member OfString(str : string) =
+        if str.Length < 8 then
+            Error "Password must be at least 8 characters long"
+        else
+            Ok (InputPassword str)
+    member this.Text =
+        let (InputPassword str) = this in str
 
 /// Represents the stored form of a password, which should be impossible to reverse to a plain-text password
-/// without brute forcing it, and slow to brute force.
-type UserPasswordHash =
-    | BCryptDotNet of string
-    member this.Verify(password : string) =
-        match this with
-        | BCryptDotNet hash ->
-            BCrypt.Net.BCrypt.Verify(password, hash)
-    static member Generate(password : string) =
-        let salt = BCrypt.Net.BCrypt.GenerateSalt()
-        let hashed = BCrypt.Net.BCrypt.HashPassword(password, salt)
-        BCryptDotNet hashed
+/// without brute forcing it, and slow to brute force. The details are implemented by the persistence layer.
+type UserPasswordHash = InputPassword -> bool
 
 type Session =
     {   Id : Session Id

@@ -24,10 +24,10 @@ type IUserPersistence =
         -> unit Plan
 
     /// Update a user's password hash in the database. Sets the Updated occurence.
-    abstract member UpdatePasswordHash
+    abstract member UpdatePassword
         : updatedBy : Session Id
         * updateUser : User Id
-        * hash : UserPasswordHash
+        * password : InputPassword
         -> unit Plan
 
     /// Find a user by their ID.
