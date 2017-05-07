@@ -77,6 +77,18 @@ let private getUserById (Id id) =
             }
     }
 
+type private GetUserBySetupTokenSQL = SQL<"""
+    select Id, Created
+    from Users
+    where SetupToken = @token
+""">
+
+let private getUserBySetupToken (UserSetupToken token ) =
+    plan {
+        let! row = GetUserBySetupTokenSQL.Command(token).TryExactlyOne()
+        return row |> Option.map (fun r -> (Id r.Id, r.Created))
+    }
+
 type private UpdateUserSQL = SQL<"""
     update Users set
         UpdatedBy = @updatedBy
@@ -121,6 +133,8 @@ let userPersistence =
             getUserByEmail email
         member this.GetUserById(id) =
             getUserById id
+        member this.GetUserBySetupToken(token) =
+            getUserBySetupToken token
         member this.Update(updatedBy, updateUserId, email, name) =
             updateUser updatedBy updateUserId email name
         member this.UpdatePassword(updatedBy, updateUser, password) =

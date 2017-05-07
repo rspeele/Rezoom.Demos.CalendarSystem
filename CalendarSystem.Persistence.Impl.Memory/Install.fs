@@ -19,6 +19,8 @@ let private userPersistence =
             wrap <| fun () -> Storage.Users.getUserByEmail email
         member __.GetUserById(id) =
             wrap <| fun () -> Storage.Users.getUserById id
+        member __.GetUserBySetupToken(token) =
+            wrap <| fun () -> Storage.Users.getUserBySetupToken token
         member __.Update(updatedBy, updateUser, email, name) =
             wrap <| fun () -> Storage.Users.updateUser updatedBy updateUser email name
         member __.UpdatePassword(updatedBy, updateUser, password) =

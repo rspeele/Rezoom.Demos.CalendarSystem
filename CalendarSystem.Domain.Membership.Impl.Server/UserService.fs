@@ -7,6 +7,7 @@ open CalendarSystem.Model
 open CalendarSystem.Model.SystemTasks
 open CalendarSystem.Model.Membership
 open CalendarSystem.Persistence.SystemTasks.Implementation
+open System.Security
 
 let service =
     { new IUserService with
@@ -41,5 +42,30 @@ let service =
             plan {
                 let! _ = Membership.Authentication.Authenticate(claim)
                 return! MembershipPersistence.Users.GetUserById(userId)
+            }
+        member this.SetupUser(setupToken, password) =
+            plan {
+                let! user = MembershipPersistence.Users.GetUserBySetupToken(setupToken)
+                match user with
+                | None -> raise <| SecurityException("Invalid setup token")
+                | Some (userId, created) ->
+                    if created <= DateTimeOffset.UtcNow + TimeSpan.OfDays(-14.0<days>) then
+                        raise <| SecurityException("Setup token expired")
+                    else
+                        // get a temp session just for the setup
+                        let sessionToken = SessionToken.Generate()
+                        let! sessionId =
+                            MembershipPersistence.Sessions.CreateSession
+                                ( sessionToken
+                                , None
+                                , userId
+                                , DateTimeOffset.UtcNow.AddMinutes(30.0)
+                                )
+                        return!
+                            MembershipPersistence.Users.UpdatePassword
+                                ( updatedBy = sessionId
+                                , updateUser = userId
+                                , password = password
+                                )
             }
     }

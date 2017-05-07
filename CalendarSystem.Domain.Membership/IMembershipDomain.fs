@@ -17,6 +17,11 @@ type IUserService =
         * role : Role
         -> User Id Plan ValidationResult Plan
 
+    abstract member SetupUser
+        : setupToken : UserSetupToken
+        * password : InputPassword
+        -> unit Plan
+
 type IAuthenticationService =
     /// If you supply a username and password, you may be able get a valid claim and an estimate of
     /// when that claim will expire.

@@ -105,6 +105,17 @@ module Users =
 
     let getUserById id = users.[id].User
 
+    let getUserBySetupToken token =
+        let user =
+            users.Values
+            |> Seq.tryFind (fun u ->
+                match u.UserAuthInfo with
+                | Choice2Of2 setupToken -> setupToken = token
+                | Choice1Of2 _ -> false)
+        match user with
+        | None -> None
+        | Some user -> Some (user.User.Id, user.User.Created.When)
+
     let updateUser updatedBy updateUser email name =
         let user = users.[updateUser]
         users.[updateUser] <- { user with User = { user.User with Email = email; Name = name } }

@@ -1,4 +1,5 @@
 ﻿module CalendarSystem.Domain.Test.Testing
+open System.Threading.Tasks
 open Rezoom
 
 let private installed =
@@ -12,7 +13,7 @@ let rootPass = CalendarSystem.Persistence.Impl.Memory.SeedInfo.rootPass
 
 let runPlan (plan : 'a Plan) =
     installed.Force()
-    let task = Execution.execute Execution.ExecutionConfig.Default plan
+    let task : 'a Task = Execution.execute Execution.ExecutionConfig.Default plan
     // normally we wouldn't use .Result because it blocks, but that's ok for tests
     task.Result
 

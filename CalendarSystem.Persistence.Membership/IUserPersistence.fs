@@ -37,3 +37,6 @@ type IUserPersistence =
     /// You get the password hash as well since a major reason to use this method is to implement login
     /// functionality.
     abstract member GetUserByEmail : email : EmailAddress -> (User * UserPasswordHash option) option Plan
+
+    /// Attempt to find a user ID and the time they were created, given a setup token.
+    abstract member GetUserBySetupToken : token : UserSetupToken -> (User Id * DateTimeOffset) option Plan
