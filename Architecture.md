@@ -139,38 +139,38 @@ just contains interfaces/data types or interface implementations.
 
 Assemblies that just contain interfaces and data types are named:
 
-    CalendarSystem.<Layer>.<Concern>
+`CalendarSystem.<Layer>.<Concern>`
 
-    So for example:
+So for example:
 
-    CalendarSystem.Common.Membership
-        -- vocabulary of data types related to membership
+`CalendarSystem.Common.Membership`
+    -- vocabulary of data types related to membership
 
-    CalendarSystem.Domain.Membership
-        -- interfaces for the part of the domain layer handling the membership concern
+`CalendarSystem.Domain.Membership`
+    -- interfaces for the part of the domain layer handling the membership concern
 
-    CalendarSystem.Persistence.Membership
-        -- interfaces for the part of the persistence layer handling the membership concern
+`CalendarSystem.Persistence.Membership`
+    -- interfaces for the part of the persistence layer handling the membership concern
 
 Assemblies that contain implementation are named:
 
-    CalendarSystem.<Layer>.<Concern>.Impl.HowItsDone
+`CalendarSystem.<Layer>.<Concern>.Impl.HowItsDone`
 
-    So for example:
+So for example:
 
-    CalendarSystem.Persistence.Membership.Impl.SQL
-        -- implements the persistence API defined in CalendarSystem.Persistence.Membership using SQL
+`CalendarSystem.Persistence.Membership.Impl.SQL`
+    -- implements the persistence API defined in CalendarSystem.Persistence.Membership using SQL
 
-    CalendarSystem.Persistence.Membership.Impl.Files
-        -- implements the persistence API defined in CalendarSystem.Persistence.Membership using flat files
+`CalendarSystem.Persistence.Membership.Impl.Files`
+    -- implements the persistence API defined in CalendarSystem.Persistence.Membership using flat files
 
 
 If a single implementation assembly contains the implementation for a whole layer, it's named accordingly:
 
-    CalendarSystem.Persistence.Impl.SQL
-        -- implements the entire persistence layer API using a SQL
+`CalendarSystem.Persistence.Impl.SQL`
+    -- implements the entire persistence layer API using a SQL
 
-    This would make sense for SQL since we'd want to have foreign keys pointing across concerns.
+This would make sense for SQL since we'd want to have foreign keys pointing across concerns.
 
 
 

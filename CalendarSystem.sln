@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{D480C286-293C-4BBB-8873-5A4A5E18A498}"
 	ProjectSection(SolutionItems) = preProject
 		Architecture.md = Architecture.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CalendarSystem.Model.Membership", "CalendarSystem.Model.Membership\CalendarSystem.Model.Membership.fsproj", "{50D1F452-BAE6-4C64-8580-7135CEF8BCED}"

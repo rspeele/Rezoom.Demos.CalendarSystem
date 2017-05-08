@@ -50,10 +50,11 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <None Include="README.md" />
+    <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="ISystemTaskPersistenceProcessing.fs" />
     <Compile Include="SystemTaskPersistenceProcessing.fs" />
-    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -71,8 +72,6 @@
     <Reference Include="System.ValueTuple">
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CalendarSystem.Model.SystemTasks\CalendarSystem.Model.SystemTasks.fsproj">
       <Name>CalendarSystem.Model.SystemTasks</Name>
       <Project>{47f993c9-f969-49ba-910f-0782f52bc331}</Project>

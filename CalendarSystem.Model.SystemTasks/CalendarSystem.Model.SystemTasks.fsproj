@@ -50,6 +50,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <None Include="README.md" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="SystemTask.fs" />
     <Content Include="packages.config" />
@@ -67,8 +68,6 @@
     <Reference Include="System.ValueTuple">
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CalendarSystem.Model.Calendar\CalendarSystem.Model.Calendar.fsproj">
       <Name>CalendarSystem.Model.Calendar</Name>
       <Project>{b112dca0-d124-481d-a7f3-8a79640b6317}</Project>

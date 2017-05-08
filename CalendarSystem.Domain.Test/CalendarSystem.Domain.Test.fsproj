@@ -52,6 +52,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="App.config" />
+    <None Include="README.md" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="DomainTestingUtilities.fs" />
     <Compile Include="TestAuthentication.fs" />
@@ -77,8 +78,6 @@
     <Reference Include="System.ValueTuple">
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CalendarSystem.Domain.Calendar\CalendarSystem.Domain.Calendar.fsproj">
       <Name>CalendarSystem.Domain.Calendar</Name>
       <Project>{373270f7-272b-49b6-af16-1fd9dcb291ce}</Project>

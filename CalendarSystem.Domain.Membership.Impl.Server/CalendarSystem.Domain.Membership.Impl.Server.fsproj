@@ -50,6 +50,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
+    <None Include="README.md" />
     <Content Include="packages.config" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="AuthenticationService.fs" />
@@ -72,8 +73,6 @@
     <Reference Include="System.ValueTuple">
       <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CalendarSystem.Domain.Membership\CalendarSystem.Domain.Membership.fsproj">
       <Name>CalendarSystem.Domain.Membership</Name>
       <Project>{77fb243f-6326-4529-a653-a970efb4380b}</Project>
